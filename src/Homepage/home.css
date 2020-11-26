@@ -1,0 +1,13 @@
+main {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(196, 141, 248);
+  min-height: 80vw;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 17vw;
+}

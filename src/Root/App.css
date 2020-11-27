@@ -4,3 +4,13 @@
   height: 100%;
   width: 100%;
 }
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar li {
+  list-style-type: none;
+  margin: 1%;
+}

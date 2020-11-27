@@ -17,7 +17,7 @@ function Main() {
       />
       <Typewriter
         onInit={(typewriter) => {
-          typewriter.typeString('<h1>Sustainable Christmas✯</h1>').start();
+          typewriter.typeString('<h1>Sustainable Christmas ✯</h1>').start();
         }}
       />
     </main>

@@ -5,6 +5,7 @@ function Nav() {
   return (
     <nav>
       <ul className='navbar'>
+        Sustainable Christmas ✯
         <li>
           <Link to='/'>Home</Link>
         </li>

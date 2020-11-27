@@ -15,6 +15,7 @@ function Main() {
         max-speed='10'
         num='60'
       />
+      <h3>How to Celebrate a</h3>
       <Typewriter
         onInit={(typewriter) => {
           typewriter.typeString('<h1>Sustainable Christmas ✯</h1>').start();

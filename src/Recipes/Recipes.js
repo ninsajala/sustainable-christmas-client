@@ -5,12 +5,12 @@ import Recipelist from './recipelist';
 function Recipes() {
   const [recipeData, setRecipeData] = useState('');
 
-  let ApiKey = `c633d98f9fa7447a88dde9f04357c75e`;
+  //let ApiKey = `c633d98f9fa7447a88dde9f04357c75e`;
 
   function getRecipesFromApi() {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${ApiKey}c75e&diet=vegetarian&number=50`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=c633d98f9fa7447a88dde9f04357c75e&diet=vegetarian&number=30`
       )
       .then((data) => {
         console.log(data);
@@ -19,7 +19,6 @@ function Recipes() {
       .catch((error) => error);
   }
 
-  getRecipesFromApi();
   return (
     <div>
       <h2>Christmas Recipes</h2>
@@ -54,10 +53,10 @@ function Recipes() {
       </ul>
       <p>Browse the vegetarian recipes below for some inspiration!</p>
       <div>
-        {recipeData.length ? (
-          <Recipelist recipes={recipeData} />
+        {!recipeData.length ? (
+          ((<p>Data is loading</p>), getRecipesFromApi())
         ) : (
-          <p>Loading recipes</p>
+          <Recipelist recipes={recipeData} />
         )}
       </div>
     </div>

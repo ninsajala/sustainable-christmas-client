@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Recipelist from './recipelist';
+import Recipe from './Recipe';
+import './recipes.css'
 
 function Recipes() {
-  const [recipeData, setRecipeData] = useState('');
+  const [recipeData, setRecipeData] = useState([]);
 
   //let ApiKey = `c633d98f9fa7447a88dde9f04357c75e`;
 
@@ -13,50 +14,38 @@ function Recipes() {
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=c633d98f9fa7447a88dde9f04357c75e&diet=vegetarian&number=30`
       )
       .then((data) => {
-        console.log(data);
-        setRecipeData(data.results);
+        console.log(data.data.results);
+        setRecipeData(data.data.results);
       })
       .catch((error) => error);
   }
 
+  useEffect(() => {
+    getRecipesFromApi();
+  }, []);
+
   return (
-    <div>
+    <div className='recipeOverview'>
       <h2>Christmas Recipes</h2>
       <p>
-        Cooking your 5-course Christmas dinner in a more sustainable way is
-        easier than you might think. Just keep a couple of things in mind:
+        Keep these four things in mind for a more environment friendly Christmas
+        dinner:
       </p>
 
       <ul>
-        <li>
-          Use as many <b>locally produced products</b> as possible. Choosing
-          local means less transportation + you support locals. It's a win-win!
-        </li>
-        <li>
-          Use <b>seasonal</b> fruit, vegetables and nuts. They taste better, are
-          more healthy, cheaper and of course better for the environment.
-        </li>
-        <li>
-          Go <b>organic</b>! Mainly for eggs, meat, dairy and fish it makes a
-          big difference on how animals have been treated.
-        </li>
-        <li>
-          Check if your fish is sustainably caught or bred. This{' '}
-          <a
-            href='https://www.goodfish.nl/en/'
-            target='_blank'
-            rel='noreferrer'>
-            website
-          </a>{' '}
-          gives a good overview.
-        </li>
+        <li>Local</li>
+        <li>Seasonal</li>
+        <li>Organic</li>
+        <li>Sustainable</li>
       </ul>
       <p>Browse the vegetarian recipes below for some inspiration!</p>
       <div>
-        {!recipeData.length ? (
-          ((<p>Data is loading</p>), getRecipesFromApi())
+        {recipeData ? (
+          recipeData.map((recipe, index) => (
+            <Recipe key={index} recipe={recipe} />
+          ))
         ) : (
-          <Recipelist recipes={recipeData} />
+          <div>Loading recipes</div>
         )}
       </div>
     </div>

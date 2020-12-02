@@ -12,6 +12,7 @@ function Nav() {
         <li>
           <Link to='/recipes'>Recipes</Link>
         </li>
+        {/*
         <li>
           <Link to='/music'>Music</Link>
         </li>
@@ -20,9 +21,9 @@ function Nav() {
         </li>
         <li>
           <Link to='/donate'>Donate</Link>
-        </li>
+        </li> */}
         <li>
-          <Link to='/byyou'>Tips by You</Link>
+          <Link to='/articles'>Christmas Tips</Link>
         </li>
         <li>
           <Link to='/login'>Login</Link>

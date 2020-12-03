@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Tips.css';
-import '../services/upload-service';
+import UploadService from '../services/upload-service';
 
 const initialState = { title: '', content: '', category: '', picture: '' };
 
@@ -13,10 +13,21 @@ function AddTip() {
     setFormState({ ...formState, [name]: value });
   };
 
-  // const handleFileUpload = (event) => {
-  //     const file = event.target.files[0]
+  const service = new UploadService();
 
-  // }
+  const handleFileUpload = (event) => {
+    const uploadData = new FormData();
+    uploadData.append('picture', event.target.files[0]);
+
+    service
+      .upload(uploadData)
+      .then((response) => {
+        setFormState({ ...formState, picture: response.cloudUrl });
+      })
+      .catch((err) => {
+        console.log('Error while uploading the file: ', err);
+      });
+  };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -46,6 +57,7 @@ function AddTip() {
           name='title'
           onChange={handleInputChange}
           value={formState.title}
+          autoComplete='off'
         />
       </div>
 
@@ -84,7 +96,7 @@ function AddTip() {
           className='file-input'
           type='file'
           name='picture'
-          //onChange={handleFileUpload}
+          onChange={handleFileUpload}
         />
       </div>
 

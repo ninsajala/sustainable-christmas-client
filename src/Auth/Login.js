@@ -46,6 +46,7 @@ function Login(props) {
             name='email'
             onChange={handleInputChange}
             value={formValues.email}
+            autoComplete='off'
             required
           />
         </div>
@@ -58,6 +59,7 @@ function Login(props) {
             name='password'
             onChange={handleInputChange}
             value={formValues.password}
+            autoComplete='off'
             required
           />
         </div>

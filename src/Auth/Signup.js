@@ -36,7 +36,6 @@ function Signup(props) {
         setErrorMessage(message);
       });
   };
-
   return (
     <div className='formWrapper'>
       <form className='signUpForm' onSubmit={handleSubmit}>
@@ -49,6 +48,7 @@ function Signup(props) {
             name='email'
             onChange={handleInputChange}
             value={formValues.email}
+            autoComplete='off'
             required
           />
         </div>
@@ -61,6 +61,7 @@ function Signup(props) {
             name='firstName'
             onChange={handleInputChange}
             value={formValues.firstName}
+            autoComplete='off'
           />
         </div>
 
@@ -72,6 +73,7 @@ function Signup(props) {
             name='lastName'
             onChange={handleInputChange}
             value={formValues.lastName}
+            autoComplete='off'
           />
         </div>
 
@@ -83,6 +85,7 @@ function Signup(props) {
             name='password'
             onChange={handleInputChange}
             value={formValues.password}
+            autoComplete='off'
             required
           />
         </div>
@@ -95,6 +98,7 @@ function Signup(props) {
             name='passwordCheck'
             onChange={handleInputChange}
             value={formValues.passwordCheck}
+            autoComplete='off'
             required
           />
         </div>

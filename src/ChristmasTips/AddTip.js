@@ -1,25 +1,60 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './Tips.css';
+import '../services/upload-service'
+
+const initialState = { title: '', content: '', category: '', picture: '' };
 
 function AddTip() {
+  const [formState, setFormState] = useState(initialState);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({ ...formState, [name]: value });
+  };
+
+const handleFileUpload = (event) => {
+    const file = event.target.files[0]
+
+
+}
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    const { title, content, category, picture } = formState;
+
+    axios
+      .post(
+        'http://localhost:5000/tips',
+        { title, content, category, picture },
+        { withCredentials: true }
+      )
+      .then(() => {
+        setFormState(initialState);
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
-    <form className='field addTipForm is-primary'>
+    <form className='field addTipForm' onSubmit={handleFormSubmit}>
       <h3>Add a Christmas Tip</h3>
       <div className='control'>
         <input
-          className='input is-primary'
+          className='input'
           type='text'
           placeholder='Title'
           name='title'
+          onChange={handleInputChange}
+          value={formState.title}
         />
       </div>
 
       <div className='field'>
         <label className='label'>Category</label>
         <div className='control'>
-          <div className='select is-primary'>
-            <select name='category'>
+          <div className='select'>
+            <select value={formState.category} name='category' onChange={handleInputChange}>
               <option value='Food'>Food</option>
               <option value='Gifts'>Gifts</option>
               <option value='Decoration'>Decoration</option>
@@ -33,30 +68,29 @@ function AddTip() {
       <div className='field'>
         <div className='control'>
           <textarea
-            className='textarea is-primary'
+            className='textarea'
             placeholder='Fill in your tip here'
-            name='content'></textarea>
+            name='content'
+            onChange={handleInputChange}
+            value={formState.content}></textarea>
         </div>
       </div>
 
-      <div className='file is-primary'>
-        <label className='file-label'>
-          <input className='file-input' type='file' name='picture' />
-          <span className='file-cta'>
-            <span className='file-icon'>
-              <i className='fas fa-upload'></i>
-            </span>
-            <span className='file-label'>Upload a picture</span>
-          </span>
-        </label>
+      <div className='file'>
+        <label className='file-label'>Upload a picture</label>
+        <input
+          className='file-input'
+          type='file'
+          name='picture'
+          onChange={handleFileUpload}
+        />
       </div>
 
-      <div className='field is-grouped'>
+      <div className='field'>
         <div className='control'>
-          <button className='button is-link'>Submit</button>
-        </div>
-        <div className='control'>
-          <button className='button is-link is-light'>Cancel</button>
+          <button className='button' type='submit'>
+            Submit
+          </button>
         </div>
       </div>
     </form>

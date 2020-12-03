@@ -1,7 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-function Nav() {
+function Nav(props) {
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
+  useEffect(() => {
+    setLoggedInUser(props.loggedInUser);
+  }, [props.loggedInUser]);
+
+  const checkLoggedIn = (loggedInUser) => {
+    if (loggedInUser !== null) {
+      return (
+        <span>
+          <li>
+            <Link to='/logout'>Logout</Link>
+          </li>
+          <li>
+            <Link to='/myprofile'>My Profile</Link>
+          </li>
+        </span>
+      );
+    } else {
+      return (
+        <span>
+          <li>
+            <Link to='/login'>Login</Link>
+          </li>
+          <li>
+            <Link to='/signup'>Sign Up</Link>
+          </li>
+        </span>
+      );
+    }
+  };
+
   return (
     <nav>
       <ul className='navbar'>
@@ -25,18 +57,7 @@ function Nav() {
         <li>
           <Link to='/articles'>Christmas Tips</Link>
         </li>
-        <li>
-          <Link to='/login'>Login</Link>
-        </li>
-        <li>
-          <Link to='/signup'>Sign Up</Link>
-        </li>
-        <li>
-          <Link to='/logout'>Logout</Link>
-        </li>
-        <li>
-          <Link to='/myprofile'>My Profile</Link>
-        </li>
+        {checkLoggedIn(loggedInUser)}
       </ul>
     </nav>
   );

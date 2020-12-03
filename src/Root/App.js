@@ -1,4 +1,3 @@
-//import 'bulma/css/bulma.css';
 import './App.css';
 import Home from '../Homepage/Home';
 import Recipes from '../Recipes/Recipes';
@@ -7,18 +6,51 @@ import Footer from '../Layout/Footer';
 import { Switch, Route } from 'react-router-dom';
 import TipsOverview from '../ChristmasTips/TipsOverview';
 import AddTip from '../ChristmasTips/AddTip';
+import Signup from '../Auth/Signup';
+import Login from '../Auth/Login';
+import React, { useState } from 'react';
+import AuthService from '../services/auth-service';
 
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
+  const service = new AuthService();
+
+  const fetchUser = () => {
+    if (loggedInUser === null) {
+      service
+        .isAuthenticated()
+        .then((response) => {
+          setLoggedInUser(response);
+        })
+        .catch((err) => {
+          setLoggedInUser(false);
+        });
+    }
+  };
+
+  const getUser = (userObject) => {
+    setLoggedInUser(userObject);
+  };
+
+  fetchUser();
+
   return (
     <main className='App'>
       <header>
-        <Nav />
+        <Nav loggedInUser={loggedInUser} />
       </header>
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/recipes' component={Recipes} />
         <Route exact path='/tips' component={TipsOverview} />
         <Route exact path='/tips/add' component={AddTip} />
+        <Route
+          exact
+          path='/signup'
+          render={() => <Signup getUser={getUser} />}
+        />
+        <Route exact path='/login' component={Login} />
       </Switch>
       <Footer />
     </main>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Tips.css';
-import '../services/upload-service'
+import '../services/upload-service';
 
 const initialState = { title: '', content: '', category: '', picture: '' };
 
@@ -13,11 +13,10 @@ function AddTip() {
     setFormState({ ...formState, [name]: value });
   };
 
-const handleFileUpload = (event) => {
-    const file = event.target.files[0]
+  // const handleFileUpload = (event) => {
+  //     const file = event.target.files[0]
 
-
-}
+  // }
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -54,7 +53,10 @@ const handleFileUpload = (event) => {
         <label className='label'>Category</label>
         <div className='control'>
           <div className='select'>
-            <select value={formState.category} name='category' onChange={handleInputChange}>
+            <select
+              value={formState.category}
+              name='category'
+              onChange={handleInputChange}>
               <option value='Food'>Food</option>
               <option value='Gifts'>Gifts</option>
               <option value='Decoration'>Decoration</option>
@@ -82,7 +84,7 @@ const handleFileUpload = (event) => {
           className='file-input'
           type='file'
           name='picture'
-          onChange={handleFileUpload}
+          //onChange={handleFileUpload}
         />
       </div>
 

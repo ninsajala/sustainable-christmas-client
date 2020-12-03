@@ -18,7 +18,7 @@ function Nav(props) {
   };
 
   const checkLoggedIn = (loggedInUser) => {
-    if (loggedInUser !== null) {
+    if (loggedInUser) {
       return (
         <span>
           <li>

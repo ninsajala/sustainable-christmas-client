@@ -19,7 +19,7 @@ function App() {
   const fetchUser = () => {
     if (loggedInUser === null) {
       service
-        .loggedInUser()
+        .loggedin()
         .then((response) => {
           setLoggedInUser(response);
         })

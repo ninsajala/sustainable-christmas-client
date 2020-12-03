@@ -20,10 +20,7 @@ function Login(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const {
-      email,
-      password,
-    } = formValues;
+    const { email, password } = formValues;
 
     service
       .login(email, password)
@@ -40,11 +37,11 @@ function Login(props) {
   return (
     <div className='formWrapper'>
       <form className='signUpForm' onSubmit={handleSubmit}>
-        <h3>Sign Up</h3>
+        <h3>Log In</h3>
         <div className='control'>
           <input
             className='input'
-            type='text'
+            type='email'
             placeholder='Email Address'
             name='email'
             onChange={handleInputChange}
@@ -56,7 +53,7 @@ function Login(props) {
         <div className='control'>
           <input
             className='input'
-            type='text'
+            type='password'
             placeholder='Password'
             name='password'
             onChange={handleInputChange}

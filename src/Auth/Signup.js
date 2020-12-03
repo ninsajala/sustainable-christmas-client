@@ -44,7 +44,7 @@ function Signup(props) {
         <div className='control'>
           <input
             className='input'
-            type='text'
+            type='email'
             placeholder='Email Address'
             name='email'
             onChange={handleInputChange}
@@ -78,7 +78,7 @@ function Signup(props) {
         <div className='control'>
           <input
             className='input'
-            type='text'
+            type='password'
             placeholder='Password'
             name='password'
             onChange={handleInputChange}
@@ -90,7 +90,7 @@ function Signup(props) {
         <div className='control'>
           <input
             className='input'
-            type='text'
+            type='password'
             placeholder='Repeat Password'
             name='passwordCheck'
             onChange={handleInputChange}

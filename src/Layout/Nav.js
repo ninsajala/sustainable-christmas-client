@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from '../services/auth-service';
+import './layout.css';
 
 function Nav(props) {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -22,8 +23,8 @@ function Nav(props) {
       return (
         <span>
           <li>
-            <Link to='/'>
-              <button onClick={logoutUser}>Logout</button>
+            <Link to='/' onClick={logoutUser}>
+              Logout
             </Link>
           </li>
           <li>
@@ -47,8 +48,8 @@ function Nav(props) {
 
   return (
     <nav>
-      <ul className='navbar'>
-        Sustainable Christmas ✯
+      <h4>Sustainable Christmas ✯</h4>
+      <ul className='menu'>
         <li>
           <Link to='/'>Home</Link>
         </li>
@@ -66,7 +67,7 @@ function Nav(props) {
           <Link to='/donate'>Donate</Link>
         </li> */}
         <li>
-          <Link to='/articles'>Christmas Tips</Link>
+          <Link to='/tips'>Christmas Tips</Link>
         </li>
         {checkLoggedIn(loggedInUser)}
       </ul>

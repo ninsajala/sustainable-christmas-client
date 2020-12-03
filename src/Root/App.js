@@ -1,15 +1,17 @@
+import React, { useState } from 'react';
 import './App.css';
+import { Switch, Route } from 'react-router-dom';
+
+import AuthService from '../services/auth-service';
+
 import Home from '../Homepage/Home';
 import Recipes from '../Recipes/Recipes';
 import Nav from '../Layout/Nav';
 import Footer from '../Layout/Footer';
-import { Switch, Route, Redirect } from 'react-router-dom';
 import TipsOverview from '../ChristmasTips/TipsOverview';
 import AddTip from '../ChristmasTips/AddTip';
 import Signup from '../Auth/Signup';
 import Login from '../Auth/Login';
-import React, { useState } from 'react';
-import AuthService from '../services/auth-service';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -41,12 +43,11 @@ function App() {
         <Nav loggedInUser={loggedInUser} getUser={getUser} />
       </header>
       <Switch>
-        {loggedInUser && <Redirect from='/login' to='/' />}
-        {loggedInUser && <Redirect from='/signup' to='/' />}
+        {/* {loggedInUser && <Redirect from='/login' to='/' />} */}
         <Route exact path='/' component={Home} />
         <Route exact path='/recipes' component={Recipes} />
-        <Route exact path='/tips' component={TipsOverview} />
         <Route exact path='/tips/add' component={AddTip} />
+        <Route exact path='/tips' component={TipsOverview} />
         <Route
           exact
           path='/signup'

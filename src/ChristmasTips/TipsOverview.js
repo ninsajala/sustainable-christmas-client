@@ -3,11 +3,28 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 function TipsOverview() {
-    return (
-        <div>
+  const [allTips, setAllTips] = useState([]);
 
-        </div>
-    )
+  useEffect(() => {
+    axios
+      .get('https://sustainable-christmas-server.herokuapp.com/tips')
+      .then((foundTips) => {
+        setAllTips(foundTips.data);
+      });
+  }, []);
+
+  return (
+    <div className='allTipsWrapper'>
+      {allTips.map((item) => (
+        <Link key={item._id} to={`/tips/${item._id}`}>
+          <div className='oneTipList'>
+            <h4>{item.title}</h4>
+            <img src={item.picture} alt={item.title} />
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
 }
 
-export default TipsOverview
+export default TipsOverview;

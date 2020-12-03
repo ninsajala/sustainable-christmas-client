@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import AuthService from '../services/auth-service';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 const initialState = {
   email: '',
@@ -32,6 +32,8 @@ function Login(props) {
         const { message } = error.response.data;
         setErrorMessage(message);
       });
+
+    props.history.push('/');
   };
 
   return (
@@ -81,4 +83,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default withRouter(Login);

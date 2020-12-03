@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Tips.css';
 import UploadService from '../services/upload-service';
+import { Link, withRouter } from 'react-router-dom';
 
 const initialState = { title: '', content: '', category: '', picture: '' };
 
-function AddTip() {
+function AddTip(props) {
   const [formState, setFormState] = useState(initialState);
 
   const handleInputChange = (event) => {
@@ -36,7 +37,7 @@ function AddTip() {
 
     axios
       .post(
-        'http://localhost:5000/tips',
+        'https://sustainable-christmas-server.herokuapp.com/tips',
         { title, content, category, picture },
         { withCredentials: true }
       )
@@ -44,6 +45,8 @@ function AddTip() {
         setFormState(initialState);
       })
       .catch((error) => console.error(error));
+
+    props.history.push('/tips');
   };
 
   return (
@@ -106,9 +109,16 @@ function AddTip() {
             Submit
           </button>
         </div>
+        <div className='control'>
+          <Link to='/tips'>
+            <button className='button' type='cancel'>
+              Cancel
+            </button>
+          </Link>
+        </div>
       </div>
     </form>
   );
 }
 
-export default AddTip;
+export default withRouter(AddTip);

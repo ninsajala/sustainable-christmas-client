@@ -1,0 +1,41 @@
+header {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+}
+
+nav {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.menu {
+  font-size: 1.2vw;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.menu li {
+  width: 100%;
+  padding: 2%;
+  list-style-type: none;
+  margin: 1%;
+  min-width: 9vw;
+  background-color: rgb(255, 103, 103);
+  text-align: center;
+}
+
+.menu > span {
+  heigth: 100%;
+  display: flex;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}

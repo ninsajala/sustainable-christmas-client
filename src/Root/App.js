@@ -19,7 +19,7 @@ function App() {
   const fetchUser = () => {
     if (loggedInUser === null) {
       service
-        .isAuthenticated()
+        .loggedInUser()
         .then((response) => {
           setLoggedInUser(response);
         })
@@ -38,7 +38,7 @@ function App() {
   return (
     <main className='App'>
       <header>
-        <Nav loggedInUser={loggedInUser} />
+        <Nav loggedInUser={loggedInUser} getUser={getUser} />
       </header>
       <Switch>
         <Route exact path='/' component={Home} />
@@ -50,7 +50,7 @@ function App() {
           path='/signup'
           render={() => <Signup getUser={getUser} />}
         />
-        <Route exact path='/login' component={Login} />
+        <Route exact path='/login' render={() => <Login getUser={getUser} />} />
       </Switch>
       <Footer />
     </main>

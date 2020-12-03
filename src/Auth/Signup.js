@@ -23,16 +23,10 @@ function Signup(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const {
-      username,
-      password,
-      passwordCheck,
-      firstName,
-      lastName,
-    } = formValues;
+    const { email, password, passwordCheck, firstName, lastName } = formValues;
 
     service
-      .signup(username, password, passwordCheck, firstName, lastName)
+      .signup(email, password, passwordCheck, firstName, lastName)
       .then((response) => {
         setFormValues(initialState);
         props.getUser(response);
@@ -40,7 +34,6 @@ function Signup(props) {
       .catch((error) => {
         const { message } = error.response.data;
         setErrorMessage(message);
-        console.log(error);
       });
   };
 
@@ -114,6 +107,7 @@ function Signup(props) {
           </div>
         </div>
       </form>
+      {errorMessage && <span className='errorMessage'>{errorMessage}</span>}
       <p>
         Already have account?
         <Link to={'/login'}>Login</Link>

@@ -4,9 +4,9 @@ import Typewriter from 'typewriter-effect';
 import { defineCustomElements } from 'shooting-stars/dist/loader';
 defineCustomElements(window);
 
-function Main() {
+function Home() {
   return (
-    <main>
+    <section className='Homepage'>
       <shooting-stars
         image='../fallingstar.png'
         height="'30px'"
@@ -15,13 +15,15 @@ function Main() {
         max-speed='10'
         num='60'
       />
+      <h3>How to celebrate...</h3>
       <Typewriter
         onInit={(typewriter) => {
-          typewriter.typeString('<h1>Sustainable Christmas ✯</h1>').start();
+          typewriter.typeString('<h1>Christmas ✯</h1>').start();
         }}
       />
-    </main>
+      <h3 className='second'>...in a sustainable way</h3>
+    </section>
   );
 }
 
-export default Main;
+export default Home;

@@ -1,0 +1,15 @@
+.root {
+  background-color: rgb(124, 4, 94);
+}
+
+body {
+  background-color: rgb(124, 4, 94);;
+}
+
+h1 {
+  text-shadow: 3px 3px 3px #f7da50;
+}
+
+a {
+  color: black;
+}

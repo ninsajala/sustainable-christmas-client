@@ -36,7 +36,7 @@ function Signup(props) {
         setErrorMessage(message);
       });
 
-    props.history.push('/');
+    props.history.push('/myprofile');
   };
   return (
     <div className='formWrapper'>

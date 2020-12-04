@@ -37,7 +37,8 @@ function AddTip(props) {
 
     axios
       .post(
-        'https://sustainable-christmas-server.herokuapp.com/tips',
+        'http://localhost:5000/tips',
+        //'https://sustainable-christmas-server.herokuapp.com/tips',
         { title, content, category, picture },
         { withCredentials: true }
       )

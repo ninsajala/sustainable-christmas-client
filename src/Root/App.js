@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import AuthService from '../services/auth-service';
 
@@ -12,6 +12,8 @@ import TipsOverview from '../components/ChristmasTips/TipsOverview';
 import AddTip from '../components/ChristmasTips/AddTip';
 import Signup from '../components/Auth/Signup';
 import Login from '../components/Auth/Login';
+import MyProfile from '../components/Profile/MyProfile';
+import EditProfile from '../components/Profile/EditProfile';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -23,6 +25,7 @@ function App() {
       service
         .loggedin()
         .then((response) => {
+          console.log(response);
           setLoggedInUser(response);
         })
         .catch((err) => {
@@ -43,7 +46,7 @@ function App() {
         <Nav loggedInUser={loggedInUser} getUser={getUser} />
       </header>
       <Switch>
-        {/* {loggedInUser && <Redirect from='/login' to='/' />} */}
+        {/* {!loggedInUser && <Redirect from='/myprofile' to='/login' />} */}
         <Route exact path='/' component={Home} />
         <Route exact path='/recipes' component={Recipes} />
         <Route exact path='/tips/add' component={AddTip} />
@@ -54,6 +57,18 @@ function App() {
           render={() => <Signup getUser={getUser} />}
         />
         <Route exact path='/login' render={() => <Login getUser={getUser} />} />
+        <Route
+          exact
+          path='/myprofile'
+          render={() => <MyProfile loggedInUser={loggedInUser} />}
+        />
+        <Route
+          exact
+          path='/myprofile/edit'
+          render={() => (
+            <EditProfile loggedInUser={loggedInUser} getUser={getUser} />
+          )}
+        />
       </Switch>
       <Footer />
     </main>

@@ -27,13 +27,12 @@ function Login(props) {
       .then((response) => {
         setFormValues(initialState);
         props.getUser(response);
+        props.history.push('/myprofile');
       })
       .catch((error) => {
         const { message } = error.response.data;
         setErrorMessage(message);
       });
-
-    props.history.push('/');
   };
 
   return (

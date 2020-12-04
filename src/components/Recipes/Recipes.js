@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Recipe from './Recipe';
-import './recipes.css'
+import './recipes.css';
 
 function Recipes() {
   const [recipeData, setRecipeData] = useState([]);
@@ -14,7 +14,6 @@ function Recipes() {
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=c633d98f9fa7447a88dde9f04357c75e&diet=vegetarian&number=30`
       )
       .then((data) => {
-        console.log(data.data.results);
         setRecipeData(data.data.results);
       })
       .catch((error) => error);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import AuthService from '../services/auth-service';
 
@@ -14,6 +14,7 @@ import Signup from '../components/Auth/Signup';
 import Login from '../components/Auth/Login';
 import MyProfile from '../components/Profile/MyProfile';
 import EditProfile from '../components/Profile/EditProfile';
+import TipDetails from '../components/ChristmasTips/TipDetails';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -25,7 +26,6 @@ function App() {
       service
         .loggedin()
         .then((response) => {
-          console.log(response);
           setLoggedInUser(response);
         })
         .catch((err) => {
@@ -51,6 +51,11 @@ function App() {
         <Route exact path='/recipes' component={Recipes} />
         <Route exact path='/tips/add' component={AddTip} />
         <Route exact path='/tips' component={TipsOverview} />
+        <Route
+          exact
+          path='/tips/:id'
+          render={() => <TipDetails loggedInUser={loggedInUser} />}
+        />
         <Route
           exact
           path='/signup'

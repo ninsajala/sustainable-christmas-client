@@ -17,15 +17,18 @@ function TipsOverview() {
   }, []);
 
   return (
-    <div className='allTipsWrapper'>
-      {allTips.map((item) => (
-        <Link key={item._id} to={`/tips/${item._id}`}>
-          <div className='oneTipList'>
-            <h4>{item.title}</h4>
-            <img src={item.picture} alt={item.title} />
-          </div>
-        </Link>
-      ))}
+    <div className='tipsOverview'>
+      <div className='allTipsWrapper'>
+        {allTips.map((item) => (
+          <Link key={item._id} to={`/tips/${item._id}`}>
+            <div className='oneTipList'>
+              <h4>{item.title}</h4>
+              <img src={item.picture} alt={item.title} />
+            </div>
+          </Link>
+        ))}
+      </div>
+      <Link to='/tips/add'>Add a Tip</Link>
     </div>
   );
 }

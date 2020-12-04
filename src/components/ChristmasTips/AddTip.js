@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Tips.css';
 import UploadService from '../../services/upload-service';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, Redirect } from 'react-router-dom';
 
 const initialState = { title: '', content: '', category: '', picture: '' };
 
@@ -39,18 +39,18 @@ function AddTip(props) {
       .post(
         'http://localhost:5000/tips',
         //'https://sustainable-christmas-server.herokuapp.com/tips',
-        { title, content, category, picture },
+        { title, content, category, picture, author: props.loggedInUser._id },
         { withCredentials: true }
       )
-      .then(() => {
+      .then((response) => {
         setFormState(initialState);
+        console.log(response)
+        props.history.push(`/tips/${response.data._id}`);
       })
       .catch((error) => console.error(error));
-
-    props.history.push('/tips');
   };
 
-  return (
+  return props.loggedInUser ? (
     <form className='field addTipForm' onSubmit={handleFormSubmit}>
       <h3>Add a Christmas Tip</h3>
       <div className='control'>
@@ -119,6 +119,8 @@ function AddTip(props) {
         </div>
       </div>
     </form>
+  ) : (
+    <Redirect to='/login' />
   );
 }
 

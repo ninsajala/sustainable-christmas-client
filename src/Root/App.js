@@ -49,7 +49,11 @@ function App() {
         {/* {!loggedInUser && <Redirect from='/myprofile' to='/login' />} */}
         <Route exact path='/' component={Home} />
         <Route exact path='/recipes' component={Recipes} />
-        <Route exact path='/tips/add' component={AddTip} />
+        <Route
+          exact
+          path='/tips/add'
+          render={() => <AddTip loggedInUser={loggedInUser} />}
+        />
         <Route exact path='/tips' component={TipsOverview} />
         <Route
           exact

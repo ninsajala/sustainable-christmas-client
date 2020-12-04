@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Tips.css';
-import UploadService from '../services/upload-service';
+import UploadService from '../../services/upload-service';
 import { Link, withRouter } from 'react-router-dom';
 
 const initialState = { title: '', content: '', category: '', picture: '' };

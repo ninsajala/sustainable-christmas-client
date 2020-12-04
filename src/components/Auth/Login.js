@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AuthService from '../services/auth-service';
+import AuthService from '../../services/auth-service';
 import { Link, withRouter } from 'react-router-dom';
 
 const initialState = {

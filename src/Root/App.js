@@ -4,14 +4,14 @@ import { Switch, Route } from 'react-router-dom';
 
 import AuthService from '../services/auth-service';
 
-import Home from '../Homepage/Home';
-import Recipes from '../Recipes/Recipes';
-import Nav from '../Layout/Nav';
-import Footer from '../Layout/Footer';
-import TipsOverview from '../ChristmasTips/TipsOverview';
-import AddTip from '../ChristmasTips/AddTip';
-import Signup from '../Auth/Signup';
-import Login from '../Auth/Login';
+import Home from '../components/Homepage/Home';
+import Recipes from '../components/Recipes/Recipes';
+import Nav from '../components/Layout/Nav';
+import Footer from '../components/Layout/Footer';
+import TipsOverview from '../components/ChristmasTips/TipsOverview';
+import AddTip from '../components/ChristmasTips/AddTip';
+import Signup from '../components/Auth/Signup';
+import Login from '../components/Auth/Login';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);

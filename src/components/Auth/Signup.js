@@ -29,14 +29,14 @@ function Signup(props) {
       .signup(email, password, passwordCheck, firstName, lastName)
       .then((response) => {
         setFormValues(initialState);
+        console.log(`Service signup:`, response);
         props.getUser(response);
+        props.history.push('/');
       })
       .catch((error) => {
         const { message } = error.response.data;
         setErrorMessage(message);
       });
-
-    props.history.push('/myprofile');
   };
   return (
     <div className='formWrapper'>

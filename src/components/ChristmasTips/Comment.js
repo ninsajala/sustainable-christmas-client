@@ -31,6 +31,7 @@ function Comment(props) {
           tip: props.tip,
           author: props.user,
         });
+        props.updateTip();
       })
       .catch((error) => console.error(error));
   };

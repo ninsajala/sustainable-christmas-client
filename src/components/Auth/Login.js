@@ -27,7 +27,7 @@ function Login(props) {
       .then((response) => {
         setFormValues(initialState);
         props.getUser(response);
-        props.history.push('/myprofile');
+        props.history.push('/');
       })
       .catch((error) => {
         const { message } = error.response.data;

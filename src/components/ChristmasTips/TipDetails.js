@@ -32,6 +32,7 @@ function TipDetails(props) {
     axios
       .put(
         `http://localhost:5000/favorites`,
+        //`https://sustainable-christmas-server.herokuapp.com/favorites`,
         { userId, tipId },
         {
           withCredentials: true,
@@ -44,15 +45,18 @@ function TipDetails(props) {
 
   const handleDelete = () => {
     axios
-      .delete(`http://localhost:5000/tips/${tipDetails._id}`)
+      .delete(
+        `http://localhost:5000/tips/${tipDetails._id}`
+        //`https://sustainable-christmas-server.herokuapp.com/tips/${tipDetails._id}`
+      )
       .then(() => props.history.push(`/tips`));
   };
 
   const checkIfOwner = () => {
-    if (tipDetails.author === props.loggedInUser._id) {
+    if (tipDetails.author._id === props.loggedInUser._id) {
       return (
         <div>
-          <Link to={`/tip/edit/${tipDetails._id}`}>Edit Tip</Link>
+          <Link to={`/tips/edit/${tipDetails._id}`}>Edit Tip</Link>
           <button onClick={handleDelete}>Remove Tip</button>
         </div>
       );
@@ -67,13 +71,24 @@ function TipDetails(props) {
           <p>By {tipDetails.author.firstName}</p>
           <p>{tipDetails.content}</p>
           <img src={tipDetails.picture} alt={tipDetails.title} />
-          <button onClick={addToFavorites}>Add to Favorites</button>
-          {checkIfOwner}
+          {!props.loggedInUser.favorites.includes(tipDetails._id) && (
+            <button onClick={addToFavorites}>Add to Favorites</button>
+          )}
+          {props.loggedInUser.favorites.includes(tipDetails._id) && (
+            <p>Is added to favorites</p>
+          )}
+          {checkIfOwner()}
           {tipDetails.comments &&
             tipDetails.comments.map((item) => (
-              <p key={item._id}>{item.content}</p>
+              <div className='oneComment'>
+                <q key={item._id}>{item.content}</q>
+              </div>
             ))}
-          <Comment tip={tipDetails._id} user={props.loggedInUser._id} />
+          <Comment
+            tip={tipDetails._id}
+            user={props.loggedInUser._id}
+            updateTip={getTipDetails}
+          />
         </div>
       ) : (
         <div>Loading tip</div>

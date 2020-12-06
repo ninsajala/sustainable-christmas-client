@@ -13,10 +13,9 @@ function EditTip(props) {
     axios
       .get(
         `http://localhost:5000/tips/${params.id}`
-        //`https://sustainable-christmas-server.herokuapp.com/tips/${params._id}`
+        // `https://sustainable-christmas-server.herokuapp.com/tips/${params._id}`
       )
       .then((foundTip) => {
-        console.log(foundTip.data);
         setFormState({
           title: foundTip.data.title,
           content: foundTip.data.content,
@@ -24,9 +23,9 @@ function EditTip(props) {
           picture: foundTip.data.picture,
           extraInfo: foundTip.data.extraInfo,
         });
+        setLoaded(true);
       });
-    setLoaded(true);
-  });
+  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -64,7 +63,7 @@ function EditTip(props) {
     axios
       .put(
         `http://localhost:5000/tips/${params.id}`,
-        //'https://sustainable-christmas-server.herokuapp.com/tips',
+        //`https://sustainable-christmas-server.herokuapp.com/tips/${params.id}`,
         {
           title,
           content,
@@ -76,7 +75,6 @@ function EditTip(props) {
         { withCredentials: true }
       )
       .then((response) => {
-        console.log(response);
         props.history.push(`/tips/${response.data._id}`);
       })
       .catch((error) => console.error(error));
@@ -123,8 +121,9 @@ function EditTip(props) {
                 className='textarea'
                 placeholder='Fill in your tip here'
                 name='content'
-                onChange={handleInputChange}
-                value={formState.content}></textarea>
+                onChange={handleInputChange}>
+                {formState.content}
+              </textarea>
             </div>
           </div>
 

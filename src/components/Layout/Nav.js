@@ -4,7 +4,7 @@ import AuthService from '../../services/auth-service';
 import './layout.css';
 
 function Nav(props) {
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState(props.loggedInUser);
   const service = new AuthService();
 
   useEffect(() => {

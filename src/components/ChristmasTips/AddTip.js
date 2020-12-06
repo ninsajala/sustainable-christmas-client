@@ -57,8 +57,9 @@ function AddTip(props) {
       )
       .then((response) => {
         setFormState(initialState);
-        console.log(response);
-        props.history.push(`/tips/${response.data._id}`);
+        console.log(`Response after adding tip:${response}`);
+        props.history.push(`/tips`);
+        //props.history.push(`/tips/${response.data._id}`);
       })
       .catch((error) => console.error(error));
   };
@@ -114,7 +115,7 @@ function AddTip(props) {
           placeholder='Paste a link to more info here'
           name='extraInfo'
           onChange={handleInputChange}
-          value={formState.title}
+          value={formState.extraInfo}
           autoComplete='off'
         />
       </div>

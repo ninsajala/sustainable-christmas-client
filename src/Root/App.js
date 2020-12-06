@@ -27,6 +27,7 @@ function App() {
       service
         .loggedin()
         .then((response) => {
+          console.log(`loggedin user:`, response);
           setLoggedInUser(response);
         })
         .catch((err) => {
@@ -37,6 +38,7 @@ function App() {
 
   const getUser = (userObject) => {
     setLoggedInUser(userObject);
+    console.log(`Get user says:`, userObject);
   };
 
   fetchUser();

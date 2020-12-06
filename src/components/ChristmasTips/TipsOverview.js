@@ -21,14 +21,18 @@ function TipsOverview() {
       <div className='allTipsWrapper'>
         {allTips.map((item) => (
           <Link key={item._id} to={`/tips/${item._id}`}>
-            <div className='oneTipList'>
-              <h4>{item.title}</h4>
+            <article className='oneTipList'>
               <img src={item.picture} alt={item.title} />
-            </div>
+              <h4>{item.title}</h4>
+            </article>
           </Link>
         ))}
       </div>
-      <Link to='/tips/add'>Add a Tip</Link>
+      <Link to='/tips/add'>
+        <button className='btn btn-dark btn-lg' title='Go to addition form'>
+          Add a Tip
+        </button>
+      </Link>
     </div>
   );
 }

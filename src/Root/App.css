@@ -13,3 +13,14 @@ a:hover {
   transform: scale(1.1);
   text-decoration: none;
 }
+
+.middleSection {
+  min-height: 100%;
+  margin: 6% 0;
+  padding: 0;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

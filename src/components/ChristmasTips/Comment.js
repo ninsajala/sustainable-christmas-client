@@ -44,6 +44,7 @@ function Comment(props) {
             <textarea
               className='textarea'
               placeholder='Leave a comment'
+              maxLength='140'
               name='content'
               onChange={handleInputChange}
               value={allValues.content}></textarea>

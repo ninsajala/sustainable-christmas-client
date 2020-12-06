@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AuthService from '../../services/auth-service';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, Redirect } from 'react-router-dom';
+import './auth.css';
 
 const initialState = {
   email: '',
@@ -38,7 +39,9 @@ function Signup(props) {
         setErrorMessage(message);
       });
   };
-  return (
+  return props.loggedInUser ? (
+    <Redirect to='/' />
+  ) : (
     <div className='formWrapper'>
       <form className='signUpForm' onSubmit={handleSubmit}>
         <h3>Sign Up</h3>

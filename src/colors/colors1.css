@@ -27,3 +27,7 @@ a:hover {
 .oneTipList {
   background-color: violet;
 }
+
+.menu li {
+  background-color: rgb(255, 103, 103);
+}

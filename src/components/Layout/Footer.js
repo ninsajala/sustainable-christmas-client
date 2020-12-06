@@ -1,9 +1,9 @@
 import React from 'react';
-import './layout.css'
+import './layout.css';
 
 function Footer() {
   return (
-    <footer>
+    <footer className='fixed-bottom'>
       <span>
         This page was coded by{' '}
         <a href='https://github.com/ninsajala' target='_blank' rel='noreferrer'>

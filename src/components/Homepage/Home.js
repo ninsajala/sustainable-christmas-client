@@ -8,12 +8,12 @@ function Home() {
   return (
     <section className='Homepage'>
       <shooting-stars
-        image='../fallingstar.png'
+        image='../images/fallingstar.png'
         height="'30px'"
         width='30'
-        min-speed='10'
-        max-speed='10'
-        num='60'
+        min-speed='5'
+        max-speed='5'
+        num='100'
       />
       <h3>How to celebrate...</h3>
       <Typewriter

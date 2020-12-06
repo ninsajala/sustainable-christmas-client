@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Tips.css';
-import UploadService from '../services/upload-service';
+import UploadService from '../../services/upload-service';
+import { Link, withRouter, Redirect } from 'react-router-dom';
 
-const initialState = { title: '', content: '', category: '', picture: '' };
+const initialState = {
+  title: '',
+  content: '',
+  category: '',
+  picture: '',
+  extraInfo: '',
+};
 
-function AddTip() {
+function AddTip(props) {
   const [formState, setFormState] = useState(initialState);
 
   const handleInputChange = (event) => {
@@ -32,21 +39,31 @@ function AddTip() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    const { title, content, category, picture } = formState;
+    const { title, content, category, picture, extraInfo } = formState;
 
     axios
       .post(
         'http://localhost:5000/tips',
-        { title, content, category, picture },
+        //'https://sustainable-christmas-server.herokuapp.com/tips',
+        {
+          title,
+          content,
+          category,
+          picture,
+          author: props.loggedInUser._id,
+          extraInfo,
+        },
         { withCredentials: true }
       )
-      .then(() => {
+      .then((response) => {
         setFormState(initialState);
+        console.log(response);
+        props.history.push(`/tips/${response.data._id}`);
       })
       .catch((error) => console.error(error));
   };
 
-  return (
+  return props.loggedInUser ? (
     <form className='field addTipForm' onSubmit={handleFormSubmit}>
       <h3>Add a Christmas Tip</h3>
       <div className='control'>
@@ -90,6 +107,18 @@ function AddTip() {
         </div>
       </div>
 
+      <div className='control'>
+        <input
+          className='input'
+          type='text'
+          placeholder='Paste a link to more info here'
+          name='extraInfo'
+          onChange={handleInputChange}
+          value={formState.title}
+          autoComplete='off'
+        />
+      </div>
+
       <div className='file'>
         <label className='file-label'>Upload a picture</label>
         <input
@@ -106,9 +135,18 @@ function AddTip() {
             Submit
           </button>
         </div>
+        <div className='control'>
+          <Link to='/tips'>
+            <button className='button' type='cancel'>
+              Cancel
+            </button>
+          </Link>
+        </div>
       </div>
     </form>
+  ) : (
+    <Redirect to='/login' />
   );
 }
 
-export default AddTip;
+export default withRouter(AddTip);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import AuthService from '../services/auth-service';
-import { Link } from 'react-router-dom';
+import AuthService from '../../services/auth-service';
+import { Link, withRouter } from 'react-router-dom';
 
 const initialState = {
   email: '',
@@ -27,6 +27,7 @@ function Login(props) {
       .then((response) => {
         setFormValues(initialState);
         props.getUser(response);
+        props.history.push('/myprofile');
       })
       .catch((error) => {
         const { message } = error.response.data;
@@ -81,4 +82,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default withRouter(Login);

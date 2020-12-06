@@ -1,0 +1,17 @@
+.addTipForm {
+  width: 400px;
+  min-height: 800px;
+}
+
+.allTipsWrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.oneTipList {
+  width: 30vw;
+}
+
+.oneTipList img {
+  max-width: 100%;
+}

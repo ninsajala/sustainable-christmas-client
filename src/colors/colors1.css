@@ -1,15 +1,29 @@
-.root {
-  background-color: rgb(124, 4, 94);
-}
+/* .root {
+  background-color: rgb(100, 8, 8);
+}*/
 
 body {
-  background-color: rgb(124, 4, 94);;
+  color: white;
+  background-image: url('https://images.unsplash.com/photo-1575304610746-bca56e2a4b70?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80');
 }
 
-h1 {
-  text-shadow: 3px 3px 3px #f7da50;
+.Homepage {
+  color: rgb(255, 217, 0);
+}
+
+h1,
+.Homepage h3 {
+  text-shadow: 5px 3px 3px #000000;
 }
 
 a {
-  color: black;
+  color: white;
+}
+
+a:hover {
+  color: white;
+}
+
+.oneTipList {
+  background-color: violet;
 }

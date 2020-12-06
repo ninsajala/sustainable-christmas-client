@@ -9,19 +9,7 @@
   align-items: center;
 }
 
-.navbar {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.navbar li {
-  width: 100%;
-  list-style-type: none;
-  margin: 1%;
-}
-
-.navbar > span  {
-  display: flex;
-  align-items: center;
+a:hover {
+  transform: scale(1.1);
+  text-decoration: none;
 }

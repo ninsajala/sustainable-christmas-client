@@ -3,7 +3,8 @@ import axios from 'axios';
 class UploadService {
   constructor() {
     this.service = axios.create({
-      baseURL: 'http://localhost:5000/',
+      baseURL: 'http://localhost:5000',
+      //baseURL: 'https://sustainable-christmas-server.herokuapp.com/',
       withCredentials: true,
     });
   }
@@ -20,4 +21,3 @@ class UploadService {
 }
 
 export default UploadService;
-

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import AuthService from '../services/auth-service';
-import { Link } from 'react-router-dom';
+import AuthService from '../../services/auth-service';
+import { Link, withRouter } from 'react-router-dom';
 
 const initialState = {
   email: '',
@@ -35,6 +35,8 @@ function Signup(props) {
         const { message } = error.response.data;
         setErrorMessage(message);
       });
+
+    props.history.push('/myprofile');
   };
   return (
     <div className='formWrapper'>
@@ -120,4 +122,4 @@ function Signup(props) {
   );
 }
 
-export default Signup;
+export default withRouter(Signup);

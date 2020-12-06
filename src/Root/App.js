@@ -15,6 +15,7 @@ import Login from '../components/Auth/Login';
 import MyProfile from '../components/Profile/MyProfile';
 import EditProfile from '../components/Profile/EditProfile';
 import TipDetails from '../components/ChristmasTips/TipDetails';
+import EditTip from '../components/ChristmasTips/EditTip';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -54,7 +55,16 @@ function App() {
           path='/tips/add'
           render={() => <AddTip loggedInUser={loggedInUser} />}
         />
-        <Route exact path='/tips' component={TipsOverview} />
+        <Route
+          exact
+          path='/tips/edit/:id'
+          render={() => <EditTip loggedInUser={loggedInUser} />}
+        />
+        <Route
+          exact
+          path='/tips'
+          render={() => <TipsOverview loggedInUser={loggedInUser} />}
+        />
         <Route
           exact
           path='/tips/:id'

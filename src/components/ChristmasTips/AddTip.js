@@ -4,7 +4,13 @@ import './Tips.css';
 import UploadService from '../../services/upload-service';
 import { Link, withRouter, Redirect } from 'react-router-dom';
 
-const initialState = { title: '', content: '', category: '', picture: '' };
+const initialState = {
+  title: '',
+  content: '',
+  category: '',
+  picture: '',
+  extraInfo: '',
+};
 
 function AddTip(props) {
   const [formState, setFormState] = useState(initialState);
@@ -33,18 +39,25 @@ function AddTip(props) {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    const { title, content, category, picture } = formState;
+    const { title, content, category, picture, extraInfo } = formState;
 
     axios
       .post(
         'http://localhost:5000/tips',
         //'https://sustainable-christmas-server.herokuapp.com/tips',
-        { title, content, category, picture, author: props.loggedInUser._id },
+        {
+          title,
+          content,
+          category,
+          picture,
+          author: props.loggedInUser._id,
+          extraInfo,
+        },
         { withCredentials: true }
       )
       .then((response) => {
         setFormState(initialState);
-        console.log(response)
+        console.log(response);
         props.history.push(`/tips/${response.data._id}`);
       })
       .catch((error) => console.error(error));
@@ -92,6 +105,18 @@ function AddTip(props) {
             onChange={handleInputChange}
             value={formState.content}></textarea>
         </div>
+      </div>
+
+      <div className='control'>
+        <input
+          className='input'
+          type='text'
+          placeholder='Paste a link to more info here'
+          name='extraInfo'
+          onChange={handleInputChange}
+          value={formState.title}
+          autoComplete='off'
+        />
       </div>
 
       <div className='file'>

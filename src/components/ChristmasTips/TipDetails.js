@@ -1,30 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Comment from './Comment';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter, Redirect } from 'react-router-dom';
 
 function TipDetails(props) {
   const [tipDetails, setTipDetails] = useState({});
   const [loaded, setLoaded] = useState(false);
   const { params } = props.match;
 
-  function getTipDetails() {
+  const getTipDetails = () => {
     axios
       .get(
-        `http://localhost:5000/tips/${params.id}`,
-        params
+        `http://localhost:5000/tips/${params.id}`
         //`https://sustainable-christmas-server.herokuapp.com/tips/${params._id}`
       )
       .then((foundTip) => {
         console.log(foundTip.data);
         setTipDetails(foundTip.data);
+        setLoaded(true);
       });
-  }
+  };
 
   useEffect(() => {
     getTipDetails();
-    setLoaded(true);
-  }, [loaded]);
+  }, []);
 
   function addToFavorites() {
     let userId = props.loggedInUser._id;
@@ -43,6 +42,23 @@ function TipDetails(props) {
       });
   }
 
+  const handleDelete = () => {
+    axios
+      .delete(`http://localhost:5000/tips/${tipDetails._id}`)
+      .then(() => props.history.push(`/tips`));
+  };
+
+  const checkIfOwner = () => {
+    if (tipDetails.author === props.loggedInUser._id) {
+      return (
+        <div>
+          <Link to={`/tip/edit/${tipDetails._id}`}>Edit Tip</Link>
+          <button onClick={handleDelete}>Remove Tip</button>
+        </div>
+      );
+    }
+  };
+
   return props.loggedInUser ? (
     <div>
       {loaded ? (
@@ -52,6 +68,7 @@ function TipDetails(props) {
           <p>{tipDetails.content}</p>
           <img src={tipDetails.picture} alt={tipDetails.title} />
           <button onClick={addToFavorites}>Add to Favorites</button>
+          {checkIfOwner}
           {tipDetails.comments &&
             tipDetails.comments.map((item) => (
               <p key={item._id}>{item.content}</p>
@@ -63,7 +80,7 @@ function TipDetails(props) {
       )}
     </div>
   ) : (
-    <div>{loaded ? <h3>{tipDetails.title}</h3> : <div>Loading tip</div>}</div>
+    <Redirect to='/login' />
   );
 }
 

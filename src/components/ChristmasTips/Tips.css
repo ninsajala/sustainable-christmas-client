@@ -1,17 +1,77 @@
-.addTipForm {
-  width: 400px;
-  min-height: 800px;
+.tipsOverview {
+  display: flex;
+  flex-direction: column;
+  margin: 1% 3%;
+  align-items: center;
+  justify-content: center;
+}
+
+.bigForm {
+  width: 40vw;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .allTipsWrapper {
   display: flex;
   flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.allTipsWrapper a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1%;
+  padding: 2%;
 }
 
 .oneTipList {
-  width: 30vw;
+  border-radius: 15px;
+  padding: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-height: fit-content;
+  min-width: fit-content;
+  width: 25vw;
+  height: 25vw;
+  background-color: rgba(248, 248, 248, 0.8);
+}
+
+.oneTipList h4 {
+  text-align: center;
+  padding: 3% 1%;
 }
 
 .oneTipList img {
-  max-width: 100%;
+  border-radius: 15px;
+  width: 20vw;
+  height: 15vw;
+}
+
+.tipDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(248, 248, 248, 0.8);
+  border-radius: 15px;
+  padding: 4%;
+  text-align: center;
+}
+
+.favoriteButton {
+  background-color: none;
+  border: none;
+  font-size: 4vw;
+}
+
+.favoriteButton:hover {
+  transform: scale(1.2);
 }

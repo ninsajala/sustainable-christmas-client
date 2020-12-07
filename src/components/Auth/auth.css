@@ -1,0 +1,30 @@
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 8%;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px rgb(173, 173, 173);
+  min-width: 35vw;
+}
+
+.formWrapper h3 {
+  margin: 3%;
+}
+
+.signUpForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10%;
+}
+
+.signUpForm .form-group {
+  width: 100%;
+  min-width: 27vw;
+  margin: 3%;
+}

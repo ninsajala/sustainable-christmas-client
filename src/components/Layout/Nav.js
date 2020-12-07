@@ -4,7 +4,7 @@ import AuthService from '../../services/auth-service';
 import './layout.css';
 
 function Nav(props) {
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState(props.loggedInUser);
   const service = new AuthService();
 
   useEffect(() => {
@@ -22,41 +22,30 @@ function Nav(props) {
     if (loggedInUser) {
       return (
         <span>
-          <li>
-            <Link to='/' onClick={logoutUser}>
-              Logout
-            </Link>
-          </li>
-          <li>
-            <Link to='/myprofile'>My Profile</Link>
-          </li>
+          <Link to='/' onClick={logoutUser}>
+            Logout
+          </Link>
+          <Link to='/myprofile'>My Profile</Link>
         </span>
       );
     } else {
       return (
         <span>
-          <li>
-            <Link to='/login'>Login</Link>
-          </li>
-          <li>
-            <Link to='/signup'>Sign Up</Link>
-          </li>
+          <Link to='/login'>Login</Link>
+          <Link to='/signup'>Sign Up</Link>
         </span>
       );
     }
   };
 
   return (
-    <nav>
+    <header className='fixed-top'>
       <h4>Sustainable Christmas ✯</h4>
-      <ul className='menu'>
-        <li>
+      <nav>
+        <div className='menu'>
           <Link to='/'>Home</Link>
-        </li>
-        <li>
           <Link to='/recipes'>Recipes</Link>
-        </li>
-        {/*
+          {/*
         <li>
           <Link to='/music'>Music</Link>
         </li>
@@ -66,12 +55,11 @@ function Nav(props) {
         <li>
           <Link to='/donate'>Donate</Link>
         </li> */}
-        <li>
           <Link to='/tips'>Christmas Tips</Link>
-        </li>
-        {checkLoggedIn(loggedInUser)}
-      </ul>
-    </nav>
+          {checkLoggedIn(loggedInUser)}
+        </div>
+      </nav>
+    </header>
   );
 }
 

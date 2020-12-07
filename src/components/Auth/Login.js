@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AuthService from '../../services/auth-service';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, Redirect } from 'react-router-dom';
+import './auth.css';
 
 const initialState = {
   email: '',
@@ -27,7 +28,7 @@ function Login(props) {
       .then((response) => {
         setFormValues(initialState);
         props.getUser(response);
-        props.history.push('/myprofile');
+        props.history.push('/');
       })
       .catch((error) => {
         const { message } = error.response.data;
@@ -35,13 +36,15 @@ function Login(props) {
       });
   };
 
-  return (
+  return props.loggedInUser ? (
+    <Redirect to='/' />
+  ) : (
     <div className='formWrapper'>
       <form className='signUpForm' onSubmit={handleSubmit}>
         <h3>Log In</h3>
-        <div className='control'>
+        <div className='form-group'>
           <input
-            className='input'
+            className='form-control'
             type='email'
             placeholder='Email Address'
             name='email'
@@ -52,9 +55,9 @@ function Login(props) {
           />
         </div>
 
-        <div className='control'>
+        <div className='form-group'>
           <input
-            className='input'
+            className='form-control'
             type='password'
             placeholder='Password'
             name='password'
@@ -65,12 +68,10 @@ function Login(props) {
           />
         </div>
 
-        <div className='field'>
-          <div className='control'>
-            <button className='button' type='submit'>
-              Log In
-            </button>
-          </div>
+        <div className='form-group'>
+          <button className='btn btn-dark' type='submit'>
+            Log In
+          </button>
         </div>
       </form>
       {errorMessage && <span className='errorMessage'>{errorMessage}</span>}

@@ -13,10 +13,9 @@ function EditTip(props) {
     axios
       .get(
         `http://localhost:5000/tips/${params.id}`
-        //`https://sustainable-christmas-server.herokuapp.com/tips/${params._id}`
+        // `https://sustainable-christmas-server.herokuapp.com/tips/${params._id}`
       )
       .then((foundTip) => {
-        console.log(foundTip.data);
         setFormState({
           title: foundTip.data.title,
           content: foundTip.data.content,
@@ -24,9 +23,9 @@ function EditTip(props) {
           picture: foundTip.data.picture,
           extraInfo: foundTip.data.extraInfo,
         });
+        setLoaded(true);
       });
-    setLoaded(true);
-  });
+  }, [params.id]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -64,7 +63,7 @@ function EditTip(props) {
     axios
       .put(
         `http://localhost:5000/tips/${params.id}`,
-        //'https://sustainable-christmas-server.herokuapp.com/tips',
+        //`https://sustainable-christmas-server.herokuapp.com/tips/${params.id}`,
         {
           title,
           content,
@@ -76,7 +75,6 @@ function EditTip(props) {
         { withCredentials: true }
       )
       .then((response) => {
-        console.log(response);
         props.history.push(`/tips/${response.data._id}`);
       })
       .catch((error) => console.error(error));
@@ -85,94 +83,91 @@ function EditTip(props) {
   return props.loggedInUser ? (
     <div>
       {loaded ? (
-        <form className='field addTipForm' onSubmit={handleFormSubmit}>
-          <h3>Add a Christmas Tip</h3>
-          <div className='control'>
-            <input
-              className='input'
-              type='text'
-              placeholder='Title'
-              name='title'
-              onChange={handleInputChange}
-              value={formState.title}
-              autoComplete='off'
-            />
-          </div>
-
-          <div className='field'>
-            <label className='label'>Category</label>
-            <div className='control'>
-              <div className='select'>
-                <select
-                  value={formState.category}
-                  name='category'
-                  onChange={handleInputChange}>
-                  <option value='Food'>Food</option>
-                  <option value='Gifts'>Gifts</option>
-                  <option value='Decoration'>Decoration</option>
-                  <option value='Charity'>Charity</option>
-                  <option value='Other'>Other</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div className='field'>
-            <div className='control'>
-              <textarea
-                className='textarea'
-                placeholder='Fill in your tip here'
-                name='content'
+        <div className='formWrapper'>
+          <h3>Edit your Christmas Tip</h3>
+          <form className='signUpForm bigForm' onSubmit={handleFormSubmit}>
+            <div className='form-group'>
+              <input
+                className='form-control'
+                type='text'
+                placeholder='Title of your Article'
+                name='title'
+                maxLength='50'
                 onChange={handleInputChange}
-                value={formState.content}></textarea>
+                value={formState.title}
+                autoComplete='off'
+              />
             </div>
-          </div>
 
-          <div className='control'>
+            <div className='form-group row'>
+              <label className='col-sm-4 col-form-label'>Category:</label>
+              <select
+                className='form-control col-sm-8'
+                value={formState.category}
+                name='category'
+                onChange={handleInputChange}>
+                <option value='Food'>Food</option>
+                <option value='Gifts'>Gifts</option>
+                <option value='Decoration'>Decoration</option>
+                <option value='Charity'>Charity</option>
+                <option value='Other'>Other</option>
+              </select>
+            </div>
+
+            <div className='form-group'>
+              <textarea
+                rows='5'
+                className='form-control'
+                placeholder='What tip for a more sustainable Christmas do you want to share with the world?'
+                name='content'
+                onChange={handleInputChange}>
+                {formState.content}
+              </textarea>
+            </div>
+
+            <div className='form-group'>
+              <input
+                className='form-control'
+                type='text'
+                placeholder='Paste a link to more info here'
+                name='extraInfo'
+                onChange={handleInputChange}
+                value={formState.title}
+                autoComplete='off'
+              />
+            </div>
+
+            <div className='form-group'>
+              <label className='label'>Upload a picture</label>
+              <input
+                className='form-control-file'
+                type='file'
+                name='picture'
+                onChange={handleFileUpload}
+              />
+            </div>
+
             <input
-              className='input'
               type='text'
-              placeholder='Paste a link to more info here'
-              name='extraInfo'
+              name='pictureOld'
+              hidden
               onChange={handleInputChange}
-              value={formState.title}
-              autoComplete='off'
+              value={formState.picture}
             />
-          </div>
 
-          <div className='file'>
-            <label className='file-label'>Upload a picture</label>
-            <input
-              className='file-input'
-              type='file'
-              name='picture'
-              onChange={handleFileUpload}
-            />
-          </div>
-
-          <input
-            type='text'
-            name='pictureOld'
-            hidden
-            onChange={handleInputChange}
-            value={formState.picture}
-          />
-
-          <div className='field'>
-            <div className='control'>
-              <button className='button' type='submit'>
-                Submit
+            <div className='form-group button-group'>
+              <button className='btn btn-dark' type='submit'>
+                Save Changes
               </button>
-            </div>
-            <div className='control'>
+
               <Link to={`/tips/${params.id}`}>
-                <button className='button' type='cancel'>
+                <button className='btn btn-danger' type='cancel'>
                   Cancel
                 </button>
               </Link>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       ) : (
         <span>Loading form..</span>
       )}

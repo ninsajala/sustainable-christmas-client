@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AuthService from '../../services/auth-service';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, Redirect } from 'react-router-dom';
+import './auth.css';
 
 const initialState = {
   email: '',
@@ -29,16 +30,18 @@ function Signup(props) {
       .signup(email, password, passwordCheck, firstName, lastName)
       .then((response) => {
         setFormValues(initialState);
+        console.log(`Service signup:`, response);
         props.getUser(response);
+        props.history.push('/');
       })
       .catch((error) => {
         const { message } = error.response.data;
         setErrorMessage(message);
       });
-
-    props.history.push('/myprofile');
   };
-  return (
+  return props.loggedInUser ? (
+    <Redirect to='/' />
+  ) : (
     <div className='formWrapper'>
       <form className='signUpForm' onSubmit={handleSubmit}>
         <h3>Sign Up</h3>

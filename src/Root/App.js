@@ -27,6 +27,7 @@ function App() {
       service
         .loggedin()
         .then((response) => {
+          console.log(`loggedin user:`, response);
           setLoggedInUser(response);
         })
         .catch((err) => {
@@ -37,58 +38,67 @@ function App() {
 
   const getUser = (userObject) => {
     setLoggedInUser(userObject);
+    console.log(`Get user says:`, userObject);
   };
 
   fetchUser();
 
   return (
     <main className='App'>
-      <header>
-        <Nav loggedInUser={loggedInUser} getUser={getUser} />
-      </header>
-      <Switch>
-        {/* {!loggedInUser && <Redirect from='/myprofile' to='/login' />} */}
-        <Route exact path='/' component={Home} />
-        <Route exact path='/recipes' component={Recipes} />
-        <Route
-          exact
-          path='/tips/add'
-          render={() => <AddTip loggedInUser={loggedInUser} />}
-        />
-        <Route
-          exact
-          path='/tips/edit/:id'
-          render={() => <EditTip loggedInUser={loggedInUser} />}
-        />
-        <Route
-          exact
-          path='/tips'
-          render={() => <TipsOverview loggedInUser={loggedInUser} />}
-        />
-        <Route
-          exact
-          path='/tips/:id'
-          render={() => <TipDetails loggedInUser={loggedInUser} />}
-        />
-        <Route
-          exact
-          path='/signup'
-          render={() => <Signup getUser={getUser} />}
-        />
-        <Route exact path='/login' render={() => <Login getUser={getUser} />} />
-        <Route
-          exact
-          path='/myprofile'
-          render={() => <MyProfile loggedInUser={loggedInUser} />}
-        />
-        <Route
-          exact
-          path='/myprofile/edit'
-          render={() => (
-            <EditProfile loggedInUser={loggedInUser} getUser={getUser} />
-          )}
-        />
-      </Switch>
+      <Nav loggedInUser={loggedInUser} getUser={getUser} />
+      <section className='middleSection'>
+        <Switch>
+          {/* {!loggedInUser && <Redirect from='/myprofile' to='/login' />} */}
+          <Route exact path='/' component={Home} />
+          <Route exact path='/recipes' component={Recipes} />
+          <Route
+            exact
+            path='/tips/add'
+            render={() => <AddTip loggedInUser={loggedInUser} />}
+          />
+          <Route
+            exact
+            path='/tips/edit/:id'
+            render={() => <EditTip loggedInUser={loggedInUser} />}
+          />
+          <Route
+            exact
+            path='/tips'
+            render={() => <TipsOverview loggedInUser={loggedInUser} />}
+          />
+          <Route
+            exact
+            path='/tips/:id'
+            render={() => <TipDetails loggedInUser={loggedInUser} />}
+          />
+          <Route
+            exact
+            path='/signup'
+            render={() => (
+              <Signup getUser={getUser} loggedInUser={loggedInUser} />
+            )}
+          />
+          <Route
+            exact
+            path='/login'
+            render={() => (
+              <Login getUser={getUser} loggedInUser={loggedInUser} />
+            )}
+          />
+          <Route
+            exact
+            path='/myprofile'
+            render={() => <MyProfile loggedInUser={loggedInUser} />}
+          />
+          <Route
+            exact
+            path='/myprofile/edit'
+            render={() => (
+              <EditProfile loggedInUser={loggedInUser} getUser={getUser} />
+            )}
+          />
+        </Switch>
+      </section>
       <Footer />
     </main>
   );

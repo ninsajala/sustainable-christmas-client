@@ -27,7 +27,7 @@ function TipDetails(props) {
     getTipDetails();
   }, []);
 
-  const handleDelete = () => {
+  const handleDeleteTip = () => {
     axios
       .delete(
         `http://localhost:5000/tips/${tipDetails._id}`
@@ -44,13 +44,23 @@ function TipDetails(props) {
             <button className='btn btn-dark'>Edit Tip</button>
           </Link>
 
-          <button className='btn btn-danger' onClick={handleDelete}>
+          <button className='btn btn-danger' onClick={handleDeleteTip}>
             Remove Tip
           </button>
         </div>
       );
     }
   };
+
+  // const handleRemoveComment = (id, user, tip) => {
+  //   axios
+  //     .delete(
+  //       `http://localhost:5000/comment/${id}`,
+  //       //`https://sustainable-christmas-server.herokuapp.com/comment/${id}`
+  //       { user, tip }
+  //     )
+  //     .then(() => getTipDetails());
+  // };
 
   return props.loggedInUser ? (
     <div>
@@ -86,6 +96,16 @@ function TipDetails(props) {
               {tipDetails.comments.map((item) => (
                 <div className='oneComment'>
                   <q key={item._id}>{item.content}</q>
+                  <p>- {item.author.firstName}</p>
+                  {/* {props.loggedInUser.comments.includes(item._id) && (
+                    <button
+                      onCLick={() =>
+                        handleRemoveComment(item._id, item.author._id, item.tip)
+                      }
+                      title='Remove Comment'>
+                      X
+                    </button>
+                  )} */}
                 </div>
               ))}
             </div>

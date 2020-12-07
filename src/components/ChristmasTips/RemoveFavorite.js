@@ -2,10 +2,10 @@ import React from 'react';
 import axios from 'axios';
 
 function RemoveFavorite(props) {
-  function removeFromFavorites() {
-    let userId = props.loggedInUser._id;
-    let tipId = props.tipDetails._id;
+  let userId = props.loggedInUser._id;
+  let tipId = props.tipDetails._id;
 
+  function removeFromFavorites() {
     axios
       .put(
         `http://localhost:5000/favorites/remove`,

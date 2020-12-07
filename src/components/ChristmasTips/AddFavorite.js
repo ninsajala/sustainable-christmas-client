@@ -2,13 +2,13 @@ import React from 'react';
 import axios from 'axios';
 
 function AddFavorite(props) {
-  function addToFavorites() {
-    let userId = props.loggedInUser._id;
-    let tipId = props.tipDetails._id;
+let userId = props.loggedInUser._id;
+let tipId = props.tipDetails._id;
 
+  function addToFavorites() {
     axios
       .put(
-        `http://localhost:5000/favorites`,
+        `http://localhost:5000/favorites/add`,
         //`https://sustainable-christmas-server.herokuapp.com/favorites`,
         { userId, tipId },
         {

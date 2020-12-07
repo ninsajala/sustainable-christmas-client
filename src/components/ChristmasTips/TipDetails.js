@@ -17,7 +17,6 @@ function TipDetails(props) {
         //`https://sustainable-christmas-server.herokuapp.com/tips/${params._id}`
       )
       .then((foundTip) => {
-        console.log(foundTip.data);
         setTipDetails(foundTip.data);
         setLoaded(true);
       });
@@ -52,15 +51,16 @@ function TipDetails(props) {
     }
   };
 
-  // const handleRemoveComment = (id, user, tip) => {
-  //   axios
-  //     .delete(
-  //       `http://localhost:5000/comment/${id}`,
-  //       //`https://sustainable-christmas-server.herokuapp.com/comment/${id}`
-  //       { user, tip }
-  //     )
-  //     .then(() => getTipDetails());
-  // };
+  const handleRemoveComment = (id) => {
+    axios
+      .delete(
+        `http://localhost:5000/comment/${id}`
+        //`https://sustainable-christmas-server.herokuapp.com/comment/${id}`
+      )
+      .then(() => {
+        getTipDetails();
+      });
+  };
 
   return props.loggedInUser ? (
     <div>
@@ -79,15 +79,14 @@ function TipDetails(props) {
               More info
             </a>
           )}
-          {!props.loggedInUser.favorites.includes(tipDetails._id) && (
-            <AddFavorite
+          {props.loggedInUser.favorites.includes(tipDetails._id) ? (
+            <RemoveFavorite
               loggedInUser={props.loggedInUser}
               tipDetails={tipDetails}
               updateTip={getTipDetails}
             />
-          )}
-          {props.loggedInUser.favorites.includes(tipDetails._id) && (
-            <RemoveFavorite
+          ) : (
+            <AddFavorite
               loggedInUser={props.loggedInUser}
               tipDetails={tipDetails}
               updateTip={getTipDetails}
@@ -102,15 +101,14 @@ function TipDetails(props) {
                 <div className='oneComment'>
                   <q key={item._id}>{item.content}</q>
                   <p>- {item.author.firstName}</p>
-                  {/* {props.loggedInUser.comments.includes(item._id) && (
+                  {props.loggedInUser.comments.includes(item._id) && (
                     <button
-                      onCLick={() =>
-                        handleRemoveComment(item._id, item.author._id, item.tip)
-                      }
-                      title='Remove Comment'>
-                      X
+                      className='btn btn-dark'
+                      onClick={() => handleRemoveComment(item._id)}
+                      title={`Remove Comment ${item._id}`}>
+                      x
                     </button>
-                  )} */}
+                  )}
                 </div>
               ))}
             </div>

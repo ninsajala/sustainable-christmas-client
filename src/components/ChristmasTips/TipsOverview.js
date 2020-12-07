@@ -39,6 +39,11 @@ function TipsOverview() {
 
   return (
     <div className='tipsOverview'>
+      <Link to='/tips/add'>
+        <button className='btn btn-dark btn-lg' title='Go to addition form'>
+          Add a Tip
+        </button>
+      </Link>
       <TipSearch searchArticles={searchArticles} />
       <div className='allTipsWrapper'>
         {allTips.map((item) => (
@@ -50,11 +55,6 @@ function TipsOverview() {
           </Link>
         ))}
       </div>
-      <Link to='/tips/add'>
-        <button className='btn btn-dark btn-lg' title='Go to addition form'>
-          Add a Tip
-        </button>
-      </Link>
     </div>
   );
 }

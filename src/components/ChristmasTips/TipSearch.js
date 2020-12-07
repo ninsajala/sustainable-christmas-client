@@ -23,7 +23,7 @@ function TipSearch(props) {
       <form onSubmit={handleSubmit}>
         <div className='form-group row'>
           <select
-            className='form-control col-sm-4'
+            className='form-control col-sm-3'
             name='category'
             onChange={selectHandler}>
             <option value=''>All</option>
@@ -34,14 +34,14 @@ function TipSearch(props) {
             <option value='Other'>Other</option>
           </select>
           <input
-            className='form-control col-sm-4'
+            className='form-control col-sm-6'
             type='text'
             name='search'
             placeholder='Search Tips'
             autoComplete='off'
             onChange={inputChangeHandler}
           />
-          <button type='submit' className='btn btn-dark col-sm-2'>
+          <button type='submit' className='btn btn-dark col-sm-3'>
             Search
           </button>
         </div>

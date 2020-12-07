@@ -6,7 +6,6 @@ import './layout.css';
 //import soundUrl from '../../sound/JingleBellsKevinMacLeod.mp3';
 import PlayMusic from './PlayMusic';
 
-
 function Nav(props) {
   const [loggedInUser, setLoggedInUser] = useState(props.loggedInUser);
   const service = new AuthService();
@@ -62,8 +61,8 @@ function Nav(props) {
           <Link to='/tips'>Christmas Tips</Link>
           {checkLoggedIn(loggedInUser)}
         </div>
-        <PlayMusic />
       </nav>
+      <PlayMusic />
     </header>
   );
 }

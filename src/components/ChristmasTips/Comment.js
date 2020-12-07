@@ -39,23 +39,20 @@ function Comment(props) {
   return (
     <div>
       <form onSubmit={handleFormSubmit}>
-        <div className='field'>
-          <div className='control'>
-            <textarea
-              className='textarea'
-              placeholder='Leave a comment'
-              maxLength='140'
-              name='content'
-              onChange={handleInputChange}
-              value={allValues.content}></textarea>
-          </div>
+        <div className='form-group'>
+          <textarea
+            className='form-control'
+            placeholder='Leave a comment'
+            maxLength='140'
+            name='content'
+            onChange={handleInputChange}
+            value={allValues.content}></textarea>
         </div>
-        <div className='field'>
-          <div className='control'>
-            <button className='button' type='submit'>
-              Add Comment
-            </button>
-          </div>
+
+        <div className='form-group'>
+          <button className='btn btn-dark' type='submit'>
+            Add Comment
+          </button>
         </div>
       </form>
     </div>

@@ -52,12 +52,12 @@ function EditProfile(props) {
   };
 
   return props.loggedInUser ? (
-    <div>
+    <div className='formWrapper'>
+      <h3>Edit Profile</h3>
       <form className='editProfileForm' onSubmit={handleFormSubmit}>
-        <h3>Edit Profile</h3>
-        <div className='control'>
+        <div className='form-group'>
           <input
-            className='input'
+            className='form-control'
             type='text'
             name='firstName'
             onChange={handleInputChange}
@@ -65,9 +65,9 @@ function EditProfile(props) {
             autoComplete='off'
           />
         </div>
-        <div className='control'>
+        <div className='form-group'>
           <input
-            className='input'
+            className='form-control'
             type='text'
             name='lastName'
             onChange={handleInputChange}
@@ -75,21 +75,21 @@ function EditProfile(props) {
             autoComplete='off'
           />
         </div>
-        <div className='field'>
-          <div className='control'>
-            <textarea
-              className='textarea'
-              name='about'
-              onChange={handleInputChange}
-              value={allValues.about}>
-              {allValues.about}
-            </textarea>
-          </div>
+        <div className='form-group'>
+          <textarea
+            rows='2'
+            placeholder='Tell something about yourself..'
+            className='form-control'
+            name='about'
+            onChange={handleInputChange}
+            value={allValues.about}>
+            {allValues.about}
+          </textarea>
         </div>
-        <div className='file'>
-          <label className='file-label'>Upload a picture</label>
+        <div className='form-group'>
+          <label className='label'>Upload a Profile Picture</label>
           <input
-            className='file-input'
+            className='form-control-file'
             type='file'
             name='picture'
             onChange={handleFileUpload}
@@ -102,19 +102,16 @@ function EditProfile(props) {
           onChange={handleInputChange}
           value={allValues.picture}
         />
-        <div className='field'>
-          <div className='control'>
-            <button className='button' type='submit'>
-              Submit
+        <div className='form-group button-group'>
+          <button className='btn btn-dark' type='submit'>
+            Submit
+          </button>
+
+          <Link to='/myprofile'>
+            <button className='btn btn-danger' type='cancel'>
+              Cancel
             </button>
-          </div>
-          <div className='control'>
-            <Link to='/myprofile'>
-              <button className='button' type='cancel'>
-                Cancel
-              </button>
-            </Link>
-          </div>
+          </Link>
         </div>
       </form>
     </div>

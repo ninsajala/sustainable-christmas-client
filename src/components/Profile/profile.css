@@ -1,3 +1,14 @@
+.userProfile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .profileSection {
   display: flex;
+  flex-flow: row wrap-reverse;
+  align-items: center;
+  justify-content: center;
 }
+

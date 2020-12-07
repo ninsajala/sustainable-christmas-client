@@ -74,6 +74,11 @@ function TipDetails(props) {
           <p>Added to favorites by: {tipDetails.addedToFavorites.length}</p>
           <img src={tipDetails.picture} alt={tipDetails.title} />
           <p>{tipDetails.content}</p>
+          {tipDetails.extraInfo && (
+            <a href={tipDetails.extraInfo} rel='noreferrer' target='_blank'>
+              More info
+            </a>
+          )}
           {!props.loggedInUser.favorites.includes(tipDetails._id) && (
             <AddFavorite
               loggedInUser={props.loggedInUser}

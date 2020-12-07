@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from '../../services/auth-service';
 import './layout.css';
+//import ReactAudioPlayer from 'react-audio-player';
+//import soundUrl from '../../sound/JingleBellsKevinMacLeod.mp3';
+import PlayMusic from './PlayMusic';
+
 
 function Nav(props) {
   const [loggedInUser, setLoggedInUser] = useState(props.loggedInUser);
@@ -58,6 +62,7 @@ function Nav(props) {
           <Link to='/tips'>Christmas Tips</Link>
           {checkLoggedIn(loggedInUser)}
         </div>
+        <PlayMusic />
       </nav>
     </header>
   );

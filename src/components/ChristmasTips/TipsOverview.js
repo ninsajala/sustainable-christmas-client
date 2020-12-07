@@ -39,12 +39,16 @@ function TipsOverview() {
 
   return (
     <div className='tipsOverview'>
-      <Link to='/tips/add'>
-        <button className='btn btn-dark btn-lg' title='Go to addition form'>
-          Add a Tip
-        </button>
-      </Link>
-      <TipSearch searchArticles={searchArticles} />
+      <div className='tipOverviewHeader'>
+        {' '}
+        <Link to='/tips/add'>
+          <button className='btn btn-dark btn-lg' title='Go to addition form'>
+            Add a Tip
+          </button>
+        </Link>
+        <TipSearch searchArticles={searchArticles} />
+      </div>
+
       <div className='allTipsWrapper'>
         {allTips.map((item) => (
           <Link key={item._id} to={`/tips/${item._id}`}>

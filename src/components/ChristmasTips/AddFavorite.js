@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 
 function AddFavorite(props) {
-let userId = props.loggedInUser._id;
-let tipId = props.tipDetails._id;
+  let userId = props.loggedInUser._id;
+  let tipId = props.tipDetails._id;
 
   function addToFavorites() {
     axios
@@ -15,9 +15,10 @@ let tipId = props.tipDetails._id;
           withCredentials: true,
         }
       )
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         props.updateTip();
+        props.checkFavorite();
+        console.log('HALLO');
       });
   }
 

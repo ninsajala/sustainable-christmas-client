@@ -19,7 +19,7 @@ function TipSearch(props) {
   };
 
   return (
-    <div>
+    <div className='searchBarWrap'>
       <form onSubmit={handleSubmit}>
         <div className='form-group row'>
           <select

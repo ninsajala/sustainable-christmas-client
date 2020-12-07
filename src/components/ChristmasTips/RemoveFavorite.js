@@ -15,9 +15,10 @@ function RemoveFavorite(props) {
           withCredentials: true,
         }
       )
-      .then((response) => {
-        console.log(response.data);
+      .then(() => {
         props.updateTip();
+        props.checkFavorite();
+        console.log('HOI');
       });
   }
 

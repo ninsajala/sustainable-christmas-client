@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Recipe from './Recipe';
+import RecipeInList from './RecipeInList';
 import './recipes.css';
 
 function Recipes() {
   const [recipeData, setRecipeData] = useState([]);
 
-  //let ApiKey = `c633d98f9fa7447a88dde9f04357c75e`;
-
   function getRecipesFromApi() {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=c633d98f9fa7447a88dde9f04357c75e&diet=vegetarian&number=30`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=c633d98f9fa7447a88dde9f04357c75e&query=&diet=vegetarian&number=50`
       )
-      .then((data) => {
-        setRecipeData(data.data.results);
+      .then((response) => {
+        setRecipeData(response.data.results);
+        console.log(recipeData);
       })
       .catch((error) => error);
   }
@@ -30,7 +29,6 @@ function Recipes() {
         Keep these four things in mind for a more environment friendly Christmas
         dinner:
       </p>
-
       <ul>
         <li>Local</li>
         <li>Seasonal</li>
@@ -40,9 +38,11 @@ function Recipes() {
       <p>Browse the vegetarian recipes below for some inspiration!</p>
       <div>
         {recipeData ? (
-          recipeData.map((recipe, index) => (
-            <Recipe key={index} recipe={recipe} />
-          ))
+          <div className='recipeList'>
+            {recipeData.map((recipe, index) => (
+              <RecipeInList key={index} recipe={recipe} />
+            ))}
+          </div>
         ) : (
           <div>Loading recipes</div>
         )}

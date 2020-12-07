@@ -62,6 +62,32 @@ function TipDetails(props) {
       });
   };
 
+  const checkIfFavorite = () => {
+    if (
+      props.loggedInUser.favorites.find(
+        (element) => element._id === tipDetails._id
+      )
+    ) {
+      return (
+        <RemoveFavorite
+          loggedInUser={props.loggedInUser}
+          tipDetails={tipDetails}
+          updateTip={getTipDetails}
+          checkFavorite={checkIfFavorite}
+        />
+      );
+    } else {
+      return (
+        <AddFavorite
+          loggedInUser={props.loggedInUser}
+          tipDetails={tipDetails}
+          updateTip={getTipDetails}
+          checkFavorite={checkIfFavorite}
+        />
+      );
+    }
+  };
+
   return props.loggedInUser ? (
     <div>
       {loaded ? (
@@ -79,19 +105,7 @@ function TipDetails(props) {
               More info
             </a>
           )}
-          {props.loggedInUser.favorites.includes(tipDetails._id) ? (
-            <RemoveFavorite
-              loggedInUser={props.loggedInUser}
-              tipDetails={tipDetails}
-              updateTip={getTipDetails}
-            />
-          ) : (
-            <AddFavorite
-              loggedInUser={props.loggedInUser}
-              tipDetails={tipDetails}
-              updateTip={getTipDetails}
-            />
-          )}
+          {checkIfFavorite()}
           {checkIfOwner()}
           {tipDetails.comments.length === 0 && <p>Leave the first comment</p>}
           {tipDetails.comments.length > 0 && (
@@ -124,7 +138,7 @@ function TipDetails(props) {
       )}
     </div>
   ) : (
-    <Redirect to='/login' />
+    <p>You need to be logged in to see this page</p>
   );
 }
 

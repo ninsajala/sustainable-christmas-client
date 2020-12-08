@@ -45,9 +45,9 @@ function Signup(props) {
     <div className='formWrapper'>
       <form className='signUpForm' onSubmit={handleSubmit}>
         <h3>Sign Up</h3>
-        <div className='control'>
+        <div className='form-group'>
           <input
-            className='input'
+            className='form-control'
             type='email'
             placeholder='Email Address'
             name='email'
@@ -58,9 +58,9 @@ function Signup(props) {
           />
         </div>
 
-        <div className='control'>
+        <div className='form-group'>
           <input
-            className='input'
+            className='form-control'
             type='text'
             placeholder='First Name'
             name='firstName'
@@ -70,9 +70,9 @@ function Signup(props) {
           />
         </div>
 
-        <div className='control'>
+        <div className='form-group'>
           <input
-            className='input'
+            className='form-control'
             type='text'
             placeholder='Last Name'
             name='lastName'
@@ -82,9 +82,9 @@ function Signup(props) {
           />
         </div>
 
-        <div className='control'>
+        <div className='form-group'>
           <input
-            className='input'
+            className='form-control'
             type='password'
             placeholder='Password'
             name='password'
@@ -95,9 +95,9 @@ function Signup(props) {
           />
         </div>
 
-        <div className='control'>
+        <div className='form-group'>
           <input
-            className='input'
+            className='form-control'
             type='password'
             placeholder='Repeat Password'
             name='passwordCheck'
@@ -108,17 +108,13 @@ function Signup(props) {
           />
         </div>
 
-        <div className='field'>
-          <div className='control'>
-            <button className='button' type='submit'>
-              Sign Up
-            </button>
-          </div>
-        </div>
+        <button className='btn btn-warning' type='submit'>
+          Sign Up
+        </button>
       </form>
       {errorMessage && <span className='errorMessage'>{errorMessage}</span>}
       <p>
-        Already have account?
+        Already have account? {}
         <Link to={'/login'}>Login</Link>
       </p>
     </div>

@@ -68,15 +68,13 @@ function Login(props) {
           />
         </div>
 
-        <div className='form-group'>
-          <button className='btn btn-dark' type='submit'>
-            Log In
-          </button>
-        </div>
+        <button className='btn btn-warning' type='submit'>
+          Log In
+        </button>
       </form>
       {errorMessage && <span className='errorMessage'>{errorMessage}</span>}
       <p>
-        No account yet?
+        No account yet?{}
         <Link to={'/signup'}>Sign Up</Link>
       </p>
     </div>

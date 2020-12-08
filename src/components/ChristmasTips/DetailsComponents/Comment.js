@@ -37,25 +37,24 @@ function Comment(props) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleFormSubmit}>
-        <div className='form-group'>
-          <textarea
-            className='form-control'
-            placeholder='Leave a comment'
-            maxLength='140'
-            name='content'
-            onChange={handleInputChange}
-            value={allValues.content}></textarea>
-        </div>
+    <form className='row' onSubmit={handleFormSubmit}>
+      <span className='col-1'></span>
+      <input
+        className='form-control col-8'
+        placeholder='Leave a comment'
+        maxLength='140'
+        name='content'
+        onChange={handleInputChange}
+        autoComplete='off'
+        value={allValues.content}
+      />
 
-        <div className='form-group'>
-          <button className='btn btn-dark' type='submit'>
-            Add Comment
-          </button>
-        </div>
-      </form>
-    </div>
+      <div className='form-group col-1'>
+        <button className='btn btn-warning' type='submit'>
+          Add
+        </button>
+      </div>
+    </form>
   );
 }
 

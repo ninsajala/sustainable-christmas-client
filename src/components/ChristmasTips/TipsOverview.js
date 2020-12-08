@@ -42,7 +42,7 @@ function TipsOverview() {
       <div className='tipOverviewHeader'>
         {' '}
         <Link to='/tips/add'>
-          <button className='btn btn-dark btn-lg' title='Go to addition form'>
+          <button className='btn btn-warning' title='Go to addition form'>
             Add a Tip
           </button>
         </Link>

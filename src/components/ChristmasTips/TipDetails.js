@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Comment from './Comment';
-import { Link, withRouter, Redirect } from 'react-router-dom';
-import AddFavorite from './AddFavorite';
-import RemoveFavorite from './RemoveFavorite';
+import { Link, withRouter } from 'react-router-dom';
+import AddFavorite from './DetailsComponents/AddFavorite';
+import RemoveFavorite from './DetailsComponents/RemoveFavorite';
+import CommentSection from './DetailsComponents/CommentSection';
 
 function TipDetails(props) {
   const [tipDetails, setTipDetails] = useState({});
@@ -22,9 +22,7 @@ function TipDetails(props) {
       });
   };
 
-  useEffect(() => {
-    getTipDetails();
-  }, []);
+  useEffect(getTipDetails, []);
 
   const handleDeleteTip = () => {
     axios
@@ -40,29 +38,21 @@ function TipDetails(props) {
       return (
         <div className='form-group button-group'>
           <Link to={`/tips/edit/${tipDetails._id}`}>
-            <button className='btn btn-dark'>Edit Tip</button>
+            <button className='btn btn-warning btn-sm'>
+              <i class='fas fa-edit'></i>
+            </button>
           </Link>
 
-          <button className='btn btn-danger' onClick={handleDeleteTip}>
-            Remove Tip
+          <button className='btn btn-danger btn-sm' onClick={handleDeleteTip}>
+            <i class='fas fa-trash-alt'></i>
           </button>
         </div>
       );
     }
   };
 
-  const handleRemoveComment = (id) => {
-    axios
-      .delete(
-        `http://localhost:5000/comment/${id}`
-        //`https://sustainable-christmas-server.herokuapp.com/comment/${id}`
-      )
-      .then(() => {
-        getTipDetails();
-      });
-  };
-
   const checkIfFavorite = () => {
+    console.log(`checked favorite`);
     if (
       props.loggedInUser.favorites.find(
         (element) => element._id === tipDetails._id
@@ -74,6 +64,7 @@ function TipDetails(props) {
           tipDetails={tipDetails}
           updateTip={getTipDetails}
           checkFavorite={checkIfFavorite}
+          getUser={props.getUser}
         />
       );
     } else {
@@ -83,6 +74,7 @@ function TipDetails(props) {
           tipDetails={tipDetails}
           updateTip={getTipDetails}
           checkFavorite={checkIfFavorite}
+          getUser={props.getUser}
         />
       );
     }
@@ -93,52 +85,47 @@ function TipDetails(props) {
       {loaded ? (
         <div className='tipDetails'>
           <h3>{tipDetails.title}</h3>
-          <p>
-            Written by {tipDetails.author.firstName}{' '}
-            {tipDetails.author.lastName}
-          </p>
-          <p>Added to favorites by: {tipDetails.addedToFavorites.length}</p>
+          <div className='tipDetailHeaderInfo'>
+            <div className='authorSection'>
+              <p>
+                Written by {tipDetails.author.firstName}{' '}
+                {tipDetails.author.lastName}
+              </p>
+              {checkIfOwner()}
+            </div>
+            <div className='favoriteSection'>
+              <p>
+                {tipDetails.addedToFavorites.length} times added to favorites
+              </p>
+              {checkIfFavorite()}
+            </div>
+          </div>
+
           <img src={tipDetails.picture} alt={tipDetails.title} />
           <p>{tipDetails.content}</p>
-          {tipDetails.extraInfo && (
-            <a href={tipDetails.extraInfo} rel='noreferrer' target='_blank'>
-              More info
-            </a>
-          )}
-          {checkIfFavorite()}
-          {checkIfOwner()}
-          {tipDetails.comments.length === 0 && <p>Leave the first comment</p>}
-          {tipDetails.comments.length > 0 && (
-            <div className='commentSection'>
-              <h5>Comments:</h5>
-              {tipDetails.comments.map((item) => (
-                <div className='oneComment'>
-                  <q key={item._id}>{item.content}</q>
-                  <p>- {item.author.firstName}</p>
-                  {props.loggedInUser.comments.includes(item._id) && (
-                    <button
-                      className='btn btn-dark'
-                      onClick={() => handleRemoveComment(item._id)}
-                      title={`Remove Comment ${item._id}`}>
-                      x
-                    </button>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-          <Comment
-            tip={tipDetails._id}
-            user={props.loggedInUser._id}
-            updateTip={getTipDetails}
-          />
+
+          <div className='tipDetailsBottomSection'>
+            {tipDetails.extraInfo && (
+              <a href={tipDetails.extraInfo} rel='noreferrer' target='_blank'>
+                <button className='btn btn-warning'>More info</button>
+              </a>
+            )}
+            <CommentSection
+              getTipDetails={getTipDetails}
+              tipDetails={tipDetails}
+              loggedInUser={props.loggedInUser}
+            />
+          </div>
         </div>
       ) : (
         <div>Loading tip</div>
       )}
     </div>
   ) : (
-    <p>You need to be logged in to see this page</p>
+    <p>
+      Please Log In First: <br />
+      <Link to={'/login'}>Login</Link>
+    </p>
   );
 }
 

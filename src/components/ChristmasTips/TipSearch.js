@@ -41,7 +41,7 @@ function TipSearch(props) {
             autoComplete='off'
             onChange={inputChangeHandler}
           />
-          <button type='submit' className='btn btn-dark col-sm-3'>
+          <button type='submit' className='btn btn-warning col-sm-3'>
             Search
           </button>
         </div>

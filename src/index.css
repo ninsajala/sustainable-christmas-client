@@ -1,6 +1,10 @@
 body {
+  color: rgb(0, 0, 0);
+  background-image: url('./images/jeremy-marks-wp0YQUqdVDY-unsplash.jpg');
   margin: 0;
   padding: 0;
   font-family: 'Raleway', sans-serif;
-  background-size: contain;
+  background-repeat: repeat-y;
+  background-size: cover;
+  background-attachment: fixed;
 }

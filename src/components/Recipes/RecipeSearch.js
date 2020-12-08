@@ -28,6 +28,7 @@ function RecipeSearch(props) {
             type='text'
             name='query'
             placeholder='Search for Recipe'
+            autoComplete='off'
             onChange={inputChangeHandler}
           />
           <select
@@ -43,7 +44,7 @@ function RecipeSearch(props) {
             <option value='Soup'>Soup</option>
             <option value='Fingerfood'>Fingerfood</option>
           </select>
-          <button type='submit' className='btn btn-dark col-sm-3'>
+          <button type='submit' className='btn btn-warning col-sm-3'>
             Search
           </button>
         </div>

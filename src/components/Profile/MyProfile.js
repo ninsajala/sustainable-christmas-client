@@ -28,7 +28,9 @@ function MyProfile(props) {
               <div>
                 <p>No tips added yet</p>
                 <Link to='/tips/add'>
-                  <button className='btn btn-dark' title='Go to addition form'>
+                  <button
+                    className='btn btn-warning'
+                    title='Go to addition form'>
                     Add a Tip
                   </button>
                 </Link>
@@ -45,7 +47,7 @@ function MyProfile(props) {
               <div>
                 <p>No favorites yet</p>
                 <Link to='/tips'>
-                  <button className='btn btn-dark' title='Go to Tips'>
+                  <button className='btn btn-warning' title='Go to Tips'>
                     View Articles
                   </button>
                 </Link>
@@ -57,7 +59,7 @@ function MyProfile(props) {
               ))}
           </div>
           <Link to='/myprofile/edit'>
-            <button className='btn btn-dark'>Edit Profile</button>
+            <button className='btn btn-warning'>Edit Profile</button>
           </Link>
         </div>
       ) : (

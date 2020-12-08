@@ -6,15 +6,17 @@ import RecipeSearch from './RecipeSearch';
 
 function Recipes() {
   const [recipeData, setRecipeData] = useState([]);
+  //const [loaded, setLoaded] = useState
 
   function getRecipesFromApi(query, type) {
+   let apiKey1 = `c633d98f9fa7447a88dde9f04357c75e`;
+   let apiKey2 = `07d365fbfe3e48659de82374b916c33b`;
     axios
       .get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=c633d98f9fa7447a88dde9f04357c75e&query=${query}&diet=vegetarian&number=50&type=${type}`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey2}&query=${query}&diet=vegetarian&number=50&type=${type}`
       )
       .then((response) => {
         setRecipeData(response.data.results);
-        console.log(recipeData);
       })
       .catch((error) => error);
   }
@@ -43,8 +45,8 @@ function Recipes() {
       <div>
         {recipeData ? (
           <div className='recipeList'>
-            {recipeData.map((recipe, index) => (
-              <RecipeInList key={index} recipe={recipe} />
+            {recipeData.map((recipe) => (
+              <RecipeInList recipe={recipe} />
             ))}
           </div>
         ) : (

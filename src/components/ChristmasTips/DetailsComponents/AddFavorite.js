@@ -15,10 +15,10 @@ function AddFavorite(props) {
           withCredentials: true,
         }
       )
-      .then(() => {
+      .then((response) => {
+        props.getUser(response.data);
         props.updateTip();
         props.checkFavorite();
-        console.log('HALLO');
       });
   }
 

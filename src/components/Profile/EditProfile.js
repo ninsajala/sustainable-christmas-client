@@ -103,7 +103,7 @@ function EditProfile(props) {
           value={allValues.picture}
         />
         <div className='form-group button-group'>
-          <button className='btn btn-dark' type='submit'>
+          <button className='btn btn-warning' type='submit'>
             Submit
           </button>
 

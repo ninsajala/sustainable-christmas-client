@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import convert from 'xml-js';
+import CharitySearch from './CharitySearch';
 
 function CharityList() {
   const [charityData, setCharityData] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
   function getCharitiesFromApi() {
     axios
@@ -12,21 +13,27 @@ function CharityList() {
       )
       .then((response) => {
         console.log(response.data.projects.project);
-        //console.log(convert.xml2js(response));
         setCharityData(response.data.projects);
+        setLoaded(true);
       })
       .catch((error) => error);
   }
 
-  useEffect(() => {
-    getCharitiesFromApi();
-  }, []);
+  useEffect(getCharitiesFromApi, []);
 
-  return charityData ? (
-    <div>
-      <p>Projects:</p>
+  return loaded ? (
+    <div className='charityOverview'>
+      <div className='recipeIntro'>
+        <h4>Give away to Charity</h4>
+        <p>
+          In stead of buying gifts, you can choose to give away your money to a
+          charity project. Browse the projects below to find the best fitting
+          option!
+        </p>
+        <CharitySearch searchProjects={getCharitiesFromApi} />
+      </div>
       {charityData.project.map((item) => (
-        <div key={item.id}>
+        <div key={item.id} className='oneTipList'>
           <h4>{item.organization.name}</h4>
           <p>{item.summary}</p>
         </div>

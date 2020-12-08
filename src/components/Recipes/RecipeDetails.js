@@ -6,9 +6,11 @@ function RecipeDetails(props) {
   const { params } = props.match;
 
   useEffect(() => {
+    let apiKey1 = `c633d98f9fa7447a88dde9f04357c75e`;
+    let apiKey2 = `07d365fbfe3e48659de82374b916c33b`;
     axios
       .get(
-        `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=c633d98f9fa7447a88dde9f04357c75e`
+        `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${apiKey2}`
       )
       .then((response) => {
         console.log(response.data);
@@ -23,8 +25,8 @@ function RecipeDetails(props) {
       <div className='recipeInstructions'>
         <ul>
           <b>Ingredients for {recipeData.servings} servings</b>
-          {recipeData.extendedIngredients.map((item) => (
-            <li>
+          {recipeData.extendedIngredients.map((item, index) => (
+            <li key={index}>
               {Math.round(item.measures.metric.amount)} {}
               {item.measures.metric.unitShort} {}
               {item.name}
@@ -33,8 +35,8 @@ function RecipeDetails(props) {
         </ul>
         <ol>
           <b>Instructions</b>
-          {recipeData.analyzedInstructions[0].steps.map((item) => (
-            <li>{item.step}</li>
+          {recipeData.analyzedInstructions[0].steps.map((item, index) => (
+            <li key={index}>{item.step}</li>
           ))}
         </ol>
       </div>

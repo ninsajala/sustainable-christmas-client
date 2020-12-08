@@ -128,7 +128,7 @@ function AddTip(props) {
         </div>
 
         <div className='form-group button-group'>
-          <button className='btn btn-dark' type='submit'>
+          <button className='btn btn-warning' type='submit'>
             Add Tip
           </button>
 

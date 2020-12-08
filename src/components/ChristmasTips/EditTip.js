@@ -132,7 +132,7 @@ function EditTip(props) {
                 placeholder='Paste a link to more info here'
                 name='extraInfo'
                 onChange={handleInputChange}
-                value={formState.title}
+                value={formState.extraInfo}
                 autoComplete='off'
               />
             </div>
@@ -156,7 +156,7 @@ function EditTip(props) {
             />
 
             <div className='form-group button-group'>
-              <button className='btn btn-dark' type='submit'>
+              <button className='btn btn-warning' type='submit'>
                 Save Changes
               </button>
 

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import FavoriteListItem from './FavoriteListItem';
 import './profile.css';
+import TipsListItem from './TipsListItem';
 
 function MyProfile(props) {
   const [loaded, setLoaded] = useState(false);
@@ -12,30 +14,53 @@ function MyProfile(props) {
   return props.loggedInUser ? (
     <span>
       {loaded ? (
-        <div>
+        <div className='userProfile'>
           <h4>Welcome {props.loggedInUser.firstName}</h4>
+          {props.loggedInUser.about && (
+            <div className='about'>
+              <h5>About:</h5>
+              <p>{props.loggedInUser.about}</p>
+            </div>
+          )}
           <h5>My Christmas Tips</h5>
           <div className='profileSection'>
+            {props.loggedInUser.tips.length <= 0 && (
+              <div>
+                <p>No tips added yet</p>
+                <Link to='/tips/add'>
+                  <button
+                    className='btn btn-warning'
+                    title='Go to addition form'>
+                    Add a Tip
+                  </button>
+                </Link>
+              </div>
+            )}
             {props.loggedInUser.tips &&
               props.loggedInUser.tips.map((item) => (
-                <p key={item._id}>{item.title}</p>
+                <TipsListItem item={item} />
               ))}
           </div>
           <h5>My Favorites</h5>
           <div className='profileSection'>
+            {props.loggedInUser.favorites.length <= 0 && (
+              <div>
+                <p>No favorites yet</p>
+                <Link to='/tips'>
+                  <button className='btn btn-warning' title='Go to Tips'>
+                    View Articles
+                  </button>
+                </Link>
+              </div>
+            )}
             {props.loggedInUser.favorites &&
               props.loggedInUser.favorites.map((item) => (
-                <p key={item._id}>{item.title}</p>
+                <FavoriteListItem item={item} />
               ))}
           </div>
-          <h5>My Comments</h5>
-          <div className='myProfileSection'>
-            {props.loggedInUser.comments &&
-              props.loggedInUser.comments.map((item) => (
-                <p key={item._id}>{item.content}</p>
-              ))}
-          </div>
-          <Link to='/myprofile/edit'>Edit Profile</Link>
+          <Link to='/myprofile/edit'>
+            <button className='btn btn-warning'>Edit Profile</button>
+          </Link>
         </div>
       ) : (
         <span>Finding User</span>

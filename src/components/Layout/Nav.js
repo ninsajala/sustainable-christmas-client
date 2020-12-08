@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import AuthService from '../../services/auth-service';
 import './layout.css';
+import PlayMusic from './PlayMusic';
 
 function Nav(props) {
   const [loggedInUser, setLoggedInUser] = useState(props.loggedInUser);
@@ -22,17 +23,17 @@ function Nav(props) {
     if (loggedInUser) {
       return (
         <span>
-          <Link to='/' onClick={logoutUser}>
+          <NavLink to='/myprofile'>My Profile</NavLink>
+          <NavLink activeClassName='activeLink' to='/' onClick={logoutUser}>
             Logout
-          </Link>
-          <Link to='/myprofile'>My Profile</Link>
+          </NavLink>
         </span>
       );
     } else {
       return (
         <span>
-          <Link to='/login'>Login</Link>
-          <Link to='/signup'>Sign Up</Link>
+          <NavLink to='/login'>Login</NavLink>
+          <NavLink to='/signup'>Sign Up</NavLink>
         </span>
       );
     }
@@ -43,22 +44,22 @@ function Nav(props) {
       <h4>Sustainable Christmas ✯</h4>
       <nav>
         <div className='menu'>
-          <Link to='/'>Home</Link>
-          <Link to='/recipes'>Recipes</Link>
+          <NavLink to='/'>Home</NavLink>
+          <NavLink to='/tips'>Christmas Tips</NavLink>
+          <NavLink to='/recipes'>Recipes</NavLink>
+          <NavLink to='/charity'>Charity</NavLink>
           {/*
         <li>
-          <Link to='/music'>Music</Link>
+          <NavLink to='/music'>Music</NavLink>
         </li>
         <li>
-          <Link to='/gifts'>Gifts</Link>
-        </li>
-        <li>
-          <Link to='/donate'>Donate</Link>
-        </li> */}
-          <Link to='/tips'>Christmas Tips</Link>
+          <NavLink to='/gifts'>Gifts</NavLink>
+        </li>*/}
+
           {checkLoggedIn(loggedInUser)}
         </div>
       </nav>
+      <PlayMusic />
     </header>
   );
 }

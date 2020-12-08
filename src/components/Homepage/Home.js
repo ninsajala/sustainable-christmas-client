@@ -9,8 +9,8 @@ function Home() {
     <section className='Homepage'>
       <shooting-stars
         image='../images/fallingstar.png'
-        height="'30px'"
-        width='30'
+        height="50px"
+        width='50'
         min-speed='5'
         max-speed='5'
         num='100'

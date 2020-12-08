@@ -5,3 +5,69 @@
   justify-content: center;
   align-items: center;
 }
+
+.recipeIntro {
+  background-color: rgba(226, 226, 250, 0.5);
+  padding: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recipeIntro ul {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.recipeIntro li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.recipeIntro li:hover {
+  font-weight: 600;
+}
+
+.recipeList {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.oneRecipeList {
+  margin: 1%;
+}
+
+.oneRecipeList article {
+  width: 30vw;
+  height: 25vw;
+  min-height: fit-content;
+  justify-content: space-between;
+}
+
+.oneRecipeList article img {
+  margin: 0;
+  width: 100%;
+  height: auto;
+}
+
+.oneRecipeList h4 {
+  font-size: 1.2em;
+}
+
+.recipeInstructions {
+  display: flex;
+  width: 100%;
+}
+
+.recipeInstructions ol {
+  width: 30%;
+}
+
+.recipeInstructions ul,
+.recipeInstructions ol {
+  text-align: left;
+}

@@ -16,6 +16,8 @@ import MyProfile from '../components/Profile/MyProfile';
 import EditProfile from '../components/Profile/EditProfile';
 import TipDetails from '../components/ChristmasTips/TipDetails';
 import EditTip from '../components/ChristmasTips/EditTip';
+import RecipeDetails from '../components/Recipes/RecipeDetails';
+import CharityList from '../components/charity/CharityList';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -50,6 +52,7 @@ function App() {
         <Switch>
           {/* {!loggedInUser && <Redirect from='/myprofile' to='/login' />} */}
           <Route exact path='/' component={Home} />
+          <Route exact path='/recipes/:id' component={RecipeDetails} />
           <Route exact path='/recipes' component={Recipes} />
           <Route
             exact
@@ -69,7 +72,9 @@ function App() {
           <Route
             exact
             path='/tips/:id'
-            render={() => <TipDetails loggedInUser={loggedInUser} />}
+            render={() => (
+              <TipDetails loggedInUser={loggedInUser} getUser={getUser} />
+            )}
           />
           <Route
             exact
@@ -97,6 +102,7 @@ function App() {
               <EditProfile loggedInUser={loggedInUser} getUser={getUser} />
             )}
           />
+          <Route exact path='/charity' component={CharityList} />
         </Switch>
       </section>
       <Footer />

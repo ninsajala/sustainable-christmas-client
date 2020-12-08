@@ -1,3 +1,39 @@
+.userProfile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .profileSection {
   display: flex;
+  flex-flow: row wrap-reverse;
+  align-items: center;
+  justify-content: center;
+}
+
+.listItem {
+  margin: 1%;
+}
+
+.listItem a {
+  padding: 3%;
+  margin: 2%;
+  width: 16vw;
+}
+
+.listItem .oneTipList {
+  width: 15vw;
+  height: 15vw;
+  padding: 3%;
+  margin: 3%;
+}
+
+.listItem .oneTipList img {
+  width: 10vw;
+  height: 10vw;
+}
+
+.listItem .oneTipList h4 {
+  font-size: 1.2vw;
 }

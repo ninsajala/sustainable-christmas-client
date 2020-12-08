@@ -51,7 +51,7 @@ function App() {
         <Switch>
           {/* {!loggedInUser && <Redirect from='/myprofile' to='/login' />} */}
           <Route exact path='/' component={Home} />
-          <Route exact path='/recipes/id' component={RecipeDetails} />
+          <Route exact path='/recipes/:id' component={RecipeDetails} />
           <Route exact path='/recipes' component={Recipes} />
           <Route
             exact

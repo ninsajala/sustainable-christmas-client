@@ -45,6 +45,7 @@ function Nav(props) {
       <nav>
         <div className='menu'>
           <NavLink to='/'>Home</NavLink>
+          <NavLink to='/tips'>Christmas Tips</NavLink>
           <NavLink to='/recipes'>Recipes</NavLink>
           {/*
         <li>
@@ -56,7 +57,6 @@ function Nav(props) {
         <li>
           <NavLink to='/donate'>Donate</NavLink>
         </li> */}
-          <NavLink to='/tips'>Christmas Tips</NavLink>
           {checkLoggedIn(loggedInUser)}
         </div>
       </nav>

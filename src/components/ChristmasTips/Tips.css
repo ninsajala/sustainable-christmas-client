@@ -77,6 +77,11 @@
   border-radius: 15px;
   padding: 4%;
   text-align: center;
+  width: 70vw;
+}
+
+.tipDetails img {
+  width: 90%;
 }
 
 .favoriteButton {

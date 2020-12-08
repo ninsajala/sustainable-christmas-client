@@ -20,8 +20,24 @@ function RecipeDetails(props) {
     <div className='tipDetails'>
       <h3>{recipeData.title}</h3>
       <img src={recipeData.image} alt={recipeData.title} />
-      <p>{recipeData.summary}</p>
-      <ul>Ingredients</ul>
+      <div className='recipeInstructions'>
+        <ul>
+          <b>Ingredients for {recipeData.servings} servings</b>
+          {recipeData.extendedIngredients.map((item) => (
+            <li>
+              {Math.round(item.measures.metric.amount)} {}
+              {item.measures.metric.unitShort} {}
+              {item.name}
+            </li>
+          ))}
+        </ul>
+        <ol>
+          <b>Instructions</b>
+          {recipeData.analyzedInstructions[0].steps.map((item) => (
+            <li>{item.step}</li>
+          ))}
+        </ol>
+      </div>
       <a href={recipeData.sourceUrl} rel='noreferrer' target='_blank'>
         More info
       </a>

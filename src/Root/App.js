@@ -17,6 +17,7 @@ import EditProfile from '../components/Profile/EditProfile';
 import TipDetails from '../components/ChristmasTips/TipDetails';
 import EditTip from '../components/ChristmasTips/EditTip';
 import RecipeDetails from '../components/Recipes/RecipeDetails';
+import CharityList from '../components/charity/CharityList';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -99,6 +100,7 @@ function App() {
               <EditProfile loggedInUser={loggedInUser} getUser={getUser} />
             )}
           />
+          <Route exact path='/charity' component={CharityList} />
         </Switch>
       </section>
       <Footer />

@@ -47,16 +47,15 @@ function Nav(props) {
           <NavLink to='/'>Home</NavLink>
           <NavLink to='/tips'>Christmas Tips</NavLink>
           <NavLink to='/recipes'>Recipes</NavLink>
+          <NavLink to='/charity'>Charity</NavLink>
           {/*
         <li>
           <NavLink to='/music'>Music</NavLink>
         </li>
         <li>
           <NavLink to='/gifts'>Gifts</NavLink>
-        </li>
-        <li>
-          <NavLink to='/donate'>Donate</NavLink>
-        </li> */}
+        </li>*/}
+
           {checkLoggedIn(loggedInUser)}
         </div>
       </nav>

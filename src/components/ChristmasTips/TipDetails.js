@@ -1,3 +1,4 @@
+import './Tips.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
@@ -14,7 +15,7 @@ function TipDetails(props) {
     axios
       .get(
         //`http://localhost:5000/tips/${params.id}`
-        `https://sustainable-christmas-server.herokuapp.com/tips/${params._id}`
+        `https://sustainable-christmas-server.herokuapp.com/tips/${params.id}`
       )
       .then((foundTip) => {
         setTipDetails(foundTip.data);
@@ -22,7 +23,9 @@ function TipDetails(props) {
       });
   };
 
-  useEffect(getTipDetails, []);
+  useEffect(() => {
+    getTipDetails();
+  }, []);
 
   const handleDeleteTip = () => {
     axios
@@ -52,7 +55,6 @@ function TipDetails(props) {
   };
 
   const checkIfFavorite = () => {
-    console.log(`checked favorite`);
     if (
       props.loggedInUser.favorites.find(
         (element) => element._id === tipDetails._id
@@ -100,10 +102,22 @@ function TipDetails(props) {
               {checkIfFavorite()}
             </div>
           </div>
-
-          <img src={tipDetails.picture} alt={tipDetails.title} />
-          <p>{tipDetails.content}</p>
-
+          <div className='tipDetailsMain'>
+            {tipDetails.picture ? (
+              <div
+                className='detailsPicture'
+                style={{
+                  backgroundImage: `url(${tipDetails.picture})`,
+                }}></div>
+            ) : (
+              <div
+                className='detailsPicture'
+                style={{
+                  backgroundImage: `url('../../images/joanna-kosinska-h2O_jHvjfIM-unsplash.jpg)`,
+                }}></div>
+            )}
+            <p>{tipDetails.content}</p>
+          </div>
           <div className='tipDetailsBottomSection'>
             {tipDetails.extraInfo && (
               <a href={tipDetails.extraInfo} rel='noreferrer' target='_blank'>
@@ -118,13 +132,15 @@ function TipDetails(props) {
           </div>
         </div>
       ) : (
-        <div>Loading tip</div>
+        <p className='logInWarning'>Loading details..</p>
       )}
     </div>
   ) : (
-    <p>
-      Please Log In First: <br />
-      <Link to={'/login'}>Login</Link>
+    <p className='logInWarning'>
+      Please log in to see this page <br />
+      <Link to={'/login'}>
+        <button className='btn btn-warning'>Login</button>
+      </Link>
     </p>
   );
 }

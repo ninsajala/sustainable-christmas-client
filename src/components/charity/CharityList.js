@@ -12,7 +12,6 @@ function CharityList() {
         `https://api.globalgiving.org/api/public/projectservice/all/projects/active/summary/?api_key=0384aa74-ebb6-45f8-aa07-d0d7df74ee9c`
       )
       .then((response) => {
-        console.log(response.data.projects.project);
         setCharityData(response.data.projects);
         setLoaded(true);
       })

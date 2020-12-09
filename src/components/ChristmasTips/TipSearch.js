@@ -9,7 +9,6 @@ function TipSearch(props) {
   };
 
   const selectHandler = (event) => {
-    console.log(event.target.value);
     setSelect(event.target.value);
   };
 

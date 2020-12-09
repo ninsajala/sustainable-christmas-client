@@ -6,7 +6,7 @@ function RecipeDetails(props) {
   const { params } = props.match;
 
   useEffect(() => {
-    let apiKey1 = `c633d98f9fa7447a88dde9f04357c75e`;
+    //let apiKey1 = `c633d98f9fa7447a88dde9f04357c75e`;
     let apiKey2 = `07d365fbfe3e48659de82374b916c33b`;
     axios
       .get(

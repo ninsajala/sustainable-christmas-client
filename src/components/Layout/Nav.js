@@ -14,6 +14,7 @@ function Nav(props) {
 
   const logoutUser = () => {
     service.logout().then(() => {
+      localStorage.removeItem(`user`);
       setLoggedInUser(null);
       props.getUser(null);
     });

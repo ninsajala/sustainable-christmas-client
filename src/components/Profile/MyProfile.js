@@ -12,16 +12,33 @@ function MyProfile(props) {
   }, []);
 
   return props.loggedInUser ? (
-    <span>
+    <div className='profileWrapper'>
       {loaded ? (
         <div className='userProfile'>
-          <h4>Welcome {props.loggedInUser.firstName}</h4>
-          {props.loggedInUser.about && (
-            <div className='about'>
-              <h5>About:</h5>
-              <p>{props.loggedInUser.about}</p>
+          <div className='userInfo'>
+            {props.loggedInUser.picture ? (
+              <div
+                className='profilePicture'
+                style={{
+                  backgroundImage: `url(${props.loggedInUser.picture})`,
+                }}></div>
+            ) : (
+              <div
+                className='profilePicture'
+                style={{
+                  backgroundImage: `url('../../images/default-profile.jpg')`,
+                }}></div>
+            )}
+            <div className='userInfoRight'>
+              <h4>Welcome {props.loggedInUser.firstName}</h4>
+              {props.loggedInUser.about && (
+                <div className='about'>
+                  <h5>About:</h5>
+                  <p>{props.loggedInUser.about}</p>
+                </div>
+              )}
             </div>
-          )}
+          </div>
           <h5>My Christmas Tips</h5>
           <div className='profileSection'>
             {props.loggedInUser.tips.length <= 0 && (
@@ -38,7 +55,7 @@ function MyProfile(props) {
             )}
             {props.loggedInUser.tips &&
               props.loggedInUser.tips.map((item) => (
-                <TipsListItem item={item} />
+                <TipsListItem item={item} key={item._id} />
               ))}
           </div>
           <h5>My Favorites</h5>
@@ -55,7 +72,7 @@ function MyProfile(props) {
             )}
             {props.loggedInUser.favorites &&
               props.loggedInUser.favorites.map((item) => (
-                <FavoriteListItem item={item} />
+                <FavoriteListItem item={item} key={item._id} />
               ))}
           </div>
           <Link to='/myprofile/edit'>
@@ -63,13 +80,15 @@ function MyProfile(props) {
           </Link>
         </div>
       ) : (
-        <span>Finding User</span>
+        <p>Finding User</p>
       )}
-    </span>
+    </div>
   ) : (
-    <p>
-      Please Log In First:
-      <Link to={'/login'}>Login</Link>
+    <p className='logInWarning'>
+      Please log in to see this page <br />
+      <Link to={'/login'}>
+        <button className='btn btn-warning'>Login</button>
+      </Link>
     </p>
   );
 }

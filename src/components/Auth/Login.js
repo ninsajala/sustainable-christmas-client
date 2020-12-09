@@ -26,7 +26,9 @@ function Login(props) {
     service
       .login(email, password)
       .then((response) => {
+        console.log(`login:`, response);
         setFormValues(initialState);
+        localStorage.setItem(`user`, JSON.stringify(response));
         props.getUser(response);
         props.history.push('/');
       })

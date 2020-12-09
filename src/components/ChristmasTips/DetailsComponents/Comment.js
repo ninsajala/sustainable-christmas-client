@@ -37,8 +37,7 @@ function Comment(props) {
   };
 
   return (
-    <form className='row' onSubmit={handleFormSubmit}>
-      <span className='col-1'></span>
+    <form className='row commentForm' onSubmit={handleFormSubmit}>
       <input
         className='form-control col-8'
         placeholder='Leave a comment'

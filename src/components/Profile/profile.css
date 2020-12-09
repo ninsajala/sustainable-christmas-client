@@ -1,8 +1,42 @@
-.userProfile {
+.profileWrapper {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.userProfile {
+  width: 90%;
+  padding: 3%;
+  margin: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+}
+
+.userInfo {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.profilePicture {
+  background-size: cover;
+  width: 12vw;
+  height: 12vw;
+  border-radius: 15px;
+}
+
+.userInfoRight {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .profileSection {
@@ -36,4 +70,19 @@
 
 .listItem .oneTipList h4 {
   font-size: 1.2vw;
+}
+
+.logInWarning {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 4%;
+  font-size: 2vw;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+}
+
+.logInWarning button {
+  margin: 4%;
 }

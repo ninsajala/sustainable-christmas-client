@@ -25,7 +25,7 @@ function EditTip(props) {
         });
         setLoaded(true);
       });
-  }, [params.id]);
+  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;

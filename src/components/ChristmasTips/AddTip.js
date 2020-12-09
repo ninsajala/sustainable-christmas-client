@@ -57,9 +57,7 @@ function AddTip(props) {
       )
       .then((response) => {
         setFormState(initialState);
-        console.log(`Response after adding tip:${response}`);
         props.history.push(`/tips`);
-        //props.history.push(`/tips/${response.data._id}`);
       })
       .catch((error) => console.error(error));
   };

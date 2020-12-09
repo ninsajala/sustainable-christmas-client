@@ -12,8 +12,8 @@ function EditTip(props) {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/tips/${params.id}`
-        // `https://sustainable-christmas-server.herokuapp.com/tips/${params._id}`
+        //`http://localhost:5000/tips/${params.id}`
+        `https://sustainable-christmas-server.herokuapp.com/tips/${params._id}`
       )
       .then((foundTip) => {
         setFormState({

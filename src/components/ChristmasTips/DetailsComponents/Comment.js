@@ -20,8 +20,8 @@ function Comment(props) {
 
     axios
       .post(
-        'http://localhost:5000/comment',
-        //'https://sustainable-christmas-server.herokuapp.com/comment',
+        //'http://localhost:5000/comment',
+        'https://sustainable-christmas-server.herokuapp.com/comment',
         { content, tip, author },
         { withCredentials: true }
       )

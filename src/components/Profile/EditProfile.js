@@ -39,8 +39,8 @@ function EditProfile(props) {
 
     axios
       .put(
-        `http://localhost:5000/user/${props.loggedInUser._id}`,
-        //`https://sustainable-christmas-server.herokuapp.com/user/${props.loggedInUser._id}`,
+        //`http://localhost:5000/user/${props.loggedInUser._id}`,
+        `https://sustainable-christmas-server.herokuapp.com/user/${props.loggedInUser._id}`,
         { firstName, lastName, about, picture, pictureOld },
         { withCredentials: true }
       )

@@ -62,8 +62,8 @@ function EditTip(props) {
 
     axios
       .put(
-        `http://localhost:5000/tips/${params.id}`,
-        //`https://sustainable-christmas-server.herokuapp.com/tips/${params.id}`,
+        //`http://localhost:5000/tips/${params.id}`,
+        `https://sustainable-christmas-server.herokuapp.com/tips/${params.id}`,
         {
           title,
           content,

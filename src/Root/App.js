@@ -18,6 +18,7 @@ import TipDetails from '../components/ChristmasTips/TipDetails';
 import EditTip from '../components/ChristmasTips/EditTip';
 import RecipeDetails from '../components/Recipes/RecipeDetails';
 import CharityList from '../components/charity/CharityList';
+import OtherProfile from '../components/Profile/OtherProfile';
 
 function App() {
   const initialValue = JSON.parse(localStorage.getItem('user')) || null;
@@ -101,6 +102,13 @@ function App() {
             path='/myprofile/edit'
             render={() => (
               <EditProfile loggedInUser={loggedInUser} getUser={getUser} />
+            )}
+          />
+          <Route
+            exact
+            path='/profile/:id'
+            render={() => (
+              <OtherProfile loggedInUser={loggedInUser} getUser={getUser} />
             )}
           />
           <Route exact path='/charity' component={CharityList} />

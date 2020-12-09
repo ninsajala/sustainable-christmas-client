@@ -89,8 +89,12 @@ function TipDetails(props) {
             <div className='authorSection'>
               {checkIfOwner()}
               <p>
-                Written by {tipDetails.author.firstName}{' '}
-                {tipDetails.author.lastName}
+                Written by {}
+                <Link to={`/profile/${tipDetails.author._id}`}>
+                  <b>
+                    {tipDetails.author.firstName} {tipDetails.author.lastName}
+                  </b>
+                </Link>
               </p>
             </div>
             <div className='favoriteSection'>

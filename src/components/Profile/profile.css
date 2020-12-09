@@ -116,3 +116,8 @@
 .logInWarning button {
   margin: 4%;
 }
+
+.followSection {
+  display: flex;
+  align-items: center;
+}

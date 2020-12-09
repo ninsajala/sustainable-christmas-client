@@ -15,29 +15,28 @@ function MyProfile(props) {
     <div className='profileWrapper'>
       {loaded ? (
         <div className='userProfile'>
+          <h4>Welcome {props.loggedInUser.firstName}</h4>
           <div className='userInfo'>
-            {props.loggedInUser.picture ? (
-              <div
-                className='profilePicture'
-                style={{
-                  backgroundImage: `url(${props.loggedInUser.picture})`,
-                }}></div>
-            ) : (
-              <div
-                className='profilePicture'
-                style={{
-                  backgroundImage: `url('../../images/default-profile.jpg')`,
-                }}></div>
-            )}
-            <div className='userInfoRight'>
-              <h4>Welcome {props.loggedInUser.firstName}</h4>
-              {props.loggedInUser.about && (
-                <div className='about'>
-                  <h5>About:</h5>
-                  <p>{props.loggedInUser.about}</p>
-                </div>
+            <div className='pictureWrap'>
+              {props.loggedInUser.picture.length <= 0 ? (
+                <div className='profilePicture Alt'></div>
+              ) : (
+                <div
+                  className='profilePicture'
+                  style={{
+                    backgroundImage: `url(${props.loggedInUser.picture})`,
+                  }}></div>
               )}
             </div>
+            {props.loggedInUser.about && (
+              <div className='about'>
+                <h5>About:</h5>
+                <p>{props.loggedInUser.about}</p>
+                <Link to='/myprofile/edit'>
+                  <button className='btn btn-warning'>Edit Profile</button>
+                </Link>
+              </div>
+            )}
           </div>
           <h5>My Christmas Tips</h5>
           <div className='profileSection'>
@@ -75,9 +74,6 @@ function MyProfile(props) {
                 <FavoriteListItem item={item} key={item._id} />
               ))}
           </div>
-          <Link to='/myprofile/edit'>
-            <button className='btn btn-warning'>Edit Profile</button>
-          </Link>
         </div>
       ) : (
         <p>Finding User</p>

@@ -7,11 +7,12 @@
 }
 
 .recipeIntro {
-  background-color: rgba(226, 226, 250, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   padding: 1%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 15px;
 }
 
 .recipeIntro ul {
@@ -43,7 +44,7 @@
 
 .oneRecipeList article {
   width: 30vw;
-  height: 25vw;
+  height: 28vw;
   min-height: fit-content;
   justify-content: space-between;
 }
@@ -55,19 +56,29 @@
 }
 
 .oneRecipeList h4 {
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 .recipeInstructions {
+  margin: 5%;
   display: flex;
+  justify-content: center;
   width: 100%;
 }
 
 .recipeInstructions ol {
-  width: 30%;
+  width: 40%;
+  justify-content: left;
+}
+
+.recipeInstructions ul {
+  width: 40%;
+  justify-content: right;
 }
 
 .recipeInstructions ul,
 .recipeInstructions ol {
+  display: flex;
+  flex-direction: column;
   text-align: left;
 }

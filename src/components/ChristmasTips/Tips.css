@@ -132,6 +132,10 @@
   background-size: cover;
 }
 
+.altDetails {
+  background-image: url('../../images/joanna-kosinska-h2O_jHvjfIM-unsplash.jpg');
+}
+
 .tipDetailsMain p {
   padding: 2%;
   font-size: 1.1em;
@@ -140,7 +144,7 @@
 .commentSection {
   border: solid #000000 1px;
   text-align: left;
-  width: 60%;
+  width: 80%;
   padding: 2%;
 }
 
@@ -167,8 +171,9 @@
 }
 
 .tipDetailsBottomSection {
+  margin-top: 3%;
   width: 90%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }

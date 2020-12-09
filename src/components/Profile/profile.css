@@ -22,7 +22,12 @@
   width: 70%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  margin-bottom: 5%;
+}
+
+.pictureWrap {
+  width: 30%;
 }
 
 .profilePicture {
@@ -32,11 +37,13 @@
   border-radius: 15px;
 }
 
-.userInfoRight {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+.Alt {
+  background-image: url('../../images/default-profile.png');
+}
+
+.userInfo .about {
+  width: 50%;
+  height: 12vw;
 }
 
 .profileSection {

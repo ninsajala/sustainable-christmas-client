@@ -55,6 +55,9 @@ function TipsOverview() {
             <article className='oneTipList'>
               <img src={item.picture} alt={item.title} />
               <h4>{item.title}</h4>
+              <p>
+                By {item.author.firstName} {item.author.lastName}
+              </p>
             </article>
           </Link>
         ))}

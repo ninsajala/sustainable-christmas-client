@@ -6,7 +6,6 @@ import RecipeSearch from './RecipeSearch';
 
 function Recipes() {
   const [recipeData, setRecipeData] = useState([]);
-  //const [loaded, setLoaded] = useState
 
   function getRecipesFromApi(query, type) {
     //let apiKey1 = `c633d98f9fa7447a88dde9f04357c75e`;
@@ -34,10 +33,30 @@ function Recipes() {
           in mind:
         </p>
         <ul>
-          <li>Local</li>
-          <li>Seasonal</li>
-          <li>Organic</li>
-          <li>Sustainable</li>
+          <a
+            href='https://cookforgood.com/love/local/'
+            rel='noreferrer'
+            target='_blank'>
+            <li>Local</li>
+          </a>
+          <a
+            href='https://cookforgood.com/love/local/'
+            rel='noreferrer'
+            target='_blank'>
+            <li>Seasonal</li>
+          </a>
+          <a
+            href='https://wholelifestylenutrition.com/gardening/organic-on-a-budget-10-tips-to-help-you-buy-organic-food-for-less/'
+            rel='noreferrer'
+            target='_blank'>
+            <li>Organic</li>
+          </a>
+          <a
+            href='https://www.eatright.org/health/lifestyle/culture-and-traditions/sustainable-eating#:~:text=Sustainable%20agriculture%20enables%20us%20to,our%20environment%20and%20our%20bodies.'
+            rel='noreferrer'
+            target='_blank'>
+            <li>Sustainable</li>
+          </a>
         </ul>
         <p>Browse the vegetarian recipes below for some inspiration!</p>
         <RecipeSearch searchRecipes={getRecipesFromApi} />
@@ -46,7 +65,7 @@ function Recipes() {
         {recipeData ? (
           <div className='recipeList'>
             {recipeData.map((recipe) => (
-              <RecipeInList recipe={recipe} />
+              <RecipeInList key={recipe.id} recipe={recipe} />
             ))}
           </div>
         ) : (

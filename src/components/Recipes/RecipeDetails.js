@@ -13,7 +13,6 @@ function RecipeDetails(props) {
         `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${apiKey2}`
       )
       .then((response) => {
-        console.log(response.data);
         setRecipeData(response.data);
       });
   }, [params.id]);
@@ -21,7 +20,11 @@ function RecipeDetails(props) {
   return recipeData ? (
     <div className='tipDetails'>
       <h3>{recipeData.title}</h3>
-      <img src={recipeData.image} alt={recipeData.title} />
+      <div
+        className='recipeImage detailsPicture'
+        style={{
+          backgroundImage: `url(${recipeData.image})`,
+        }}></div>
       <div className='recipeInstructions'>
         <ul>
           <b>Ingredients for {recipeData.servings} servings</b>
@@ -35,13 +38,17 @@ function RecipeDetails(props) {
         </ul>
         <ol>
           <b>Instructions</b>
-          {recipeData.analyzedInstructions[0].steps.map((item, index) => (
-            <li key={index}>{item.step}</li>
-          ))}
+          {recipeData.analyzedInstructions[0] ? (
+            recipeData.analyzedInstructions[0].steps.map((item, index) => (
+              <li key={index}>{item.step}</li>
+            ))
+          ) : (
+            <p>Could not find instructions for this recipe..</p>
+          )}
         </ol>
       </div>
       <a href={recipeData.sourceUrl} rel='noreferrer' target='_blank'>
-        More info
+        <button className='btn btn-warning'>More info</button>
       </a>
     </div>
   ) : (

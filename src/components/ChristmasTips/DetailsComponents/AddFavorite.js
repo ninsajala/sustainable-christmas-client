@@ -16,6 +16,7 @@ function AddFavorite(props) {
         }
       )
       .then((response) => {
+        console.log(response);
         props.getUser(response.data);
         props.updateTip();
         props.checkFavorite();

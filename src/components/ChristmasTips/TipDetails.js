@@ -42,12 +42,12 @@ function TipDetails(props) {
         <div className='form-group button-group'>
           <Link to={`/tips/edit/${tipDetails._id}`}>
             <button className='btn btn-warning btn-sm'>
-              <i class='fas fa-edit'></i>
+              <i className='fas fa-edit'></i>
             </button>
           </Link>
 
           <button className='btn btn-danger btn-sm' onClick={handleDeleteTip}>
-            <i class='fas fa-trash-alt'></i>
+            <i className='fas fa-trash-alt'></i>
           </button>
         </div>
       );
@@ -89,11 +89,11 @@ function TipDetails(props) {
           <h3>{tipDetails.title}</h3>
           <div className='tipDetailHeaderInfo'>
             <div className='authorSection'>
+              {checkIfOwner()}
               <p>
                 Written by {tipDetails.author.firstName}{' '}
                 {tipDetails.author.lastName}
               </p>
-              {checkIfOwner()}
             </div>
             <div className='favoriteSection'>
               <p>
@@ -103,27 +103,23 @@ function TipDetails(props) {
             </div>
           </div>
           <div className='tipDetailsMain'>
-            {tipDetails.picture ? (
+            {tipDetails.picture.length <= 0 ? (
+              <div className='detailsPicture altDetails'></div>
+            ) : (
               <div
                 className='detailsPicture'
                 style={{
                   backgroundImage: `url(${tipDetails.picture})`,
                 }}></div>
-            ) : (
-              <div
-                className='detailsPicture'
-                style={{
-                  backgroundImage: `url('../../images/joanna-kosinska-h2O_jHvjfIM-unsplash.jpg)`,
-                }}></div>
             )}
             <p>{tipDetails.content}</p>
-          </div>
-          <div className='tipDetailsBottomSection'>
             {tipDetails.extraInfo && (
               <a href={tipDetails.extraInfo} rel='noreferrer' target='_blank'>
                 <button className='btn btn-warning'>More info</button>
               </a>
             )}
+          </div>
+          <div className='tipDetailsBottomSection'>
             <CommentSection
               getTipDetails={getTipDetails}
               tipDetails={tipDetails}

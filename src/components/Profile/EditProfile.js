@@ -9,6 +9,7 @@ function EditProfile(props) {
     lastName: props.loggedInUser.lastName,
     about: props.loggedInUser.about,
     picture: props.loggedInUser.picture,
+    pictureOld: props.loggedInUser.picture,
   });
 
   const handleInputChange = (event) => {
@@ -77,6 +78,7 @@ function EditProfile(props) {
         </div>
         <div className='form-group'>
           <textarea
+            maxLength='140'
             rows='2'
             placeholder='Tell something about yourself..'
             className='form-control'
@@ -100,7 +102,7 @@ function EditProfile(props) {
           name='pictureOld'
           hidden
           onChange={handleInputChange}
-          value={allValues.picture}
+          value={allValues.pictureOld}
         />
         <div className='form-group button-group'>
           <button className='btn btn-warning' type='submit'>

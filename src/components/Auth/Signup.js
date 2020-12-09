@@ -29,8 +29,9 @@ function Signup(props) {
     service
       .signup(email, password, passwordCheck, firstName, lastName)
       .then((response) => {
-        setFormValues(initialState);
         console.log(`Service signup:`, response);
+        setFormValues(initialState);
+        localStorage.setItem(`user`, JSON.stringify(response));
         props.getUser(response);
         props.history.push('/');
       })

@@ -8,12 +8,13 @@ function EditTip(props) {
   const [formState, setFormState] = useState({});
   const { params } = props.match;
   const [loaded, setLoaded] = useState(false);
+  let uploadFile
 
   useEffect(() => {
     axios
       .get(
         //`http://localhost:5000/tips/${params.id}`
-        `https://sustainable-christmas-server.herokuapp.com/tips/${params._id}`
+        `https://sustainable-christmas-server.herokuapp.com/tips/${params.id}`
       )
       .then((foundTip) => {
         setFormState({
@@ -35,12 +36,14 @@ function EditTip(props) {
   const service = new UploadService();
 
   const handleFileUpload = (event) => {
+    uploadFile = event.target.files[0];
     const uploadData = new FormData();
     uploadData.append('picture', event.target.files[0]);
 
     service
       .upload(uploadData)
       .then((response) => {
+        console.log(response)
         setFormState({ ...formState, picture: response.cloudUrl });
       })
       .catch((err) => {
@@ -120,9 +123,8 @@ function EditTip(props) {
                 className='form-control'
                 placeholder='What tip for a more sustainable Christmas do you want to share with the world?'
                 name='content'
-                onChange={handleInputChange}>
-                {formState.content}
-              </textarea>
+                onChange={handleInputChange}
+                defaultValue={formState.content}></textarea>
             </div>
 
             <div className='form-group'>
@@ -156,9 +158,15 @@ function EditTip(props) {
             />
 
             <div className='form-group button-group'>
-              <button className='btn btn-warning' type='submit'>
-                Save Changes
-              </button>
+              {!formState.picture && uploadFile ? (
+                <button className='btn btn-warning' disabled type='submit'>
+                  Save Changes
+                </button>
+              ) : (
+                <button className='btn btn-warning' type='submit'>
+                  Save Changes
+                </button>
+              )}
 
               <Link to={`/tips/${params.id}`}>
                 <button className='btn btn-danger' type='cancel'>

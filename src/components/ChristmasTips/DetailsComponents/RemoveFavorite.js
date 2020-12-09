@@ -9,13 +9,14 @@ function RemoveFavorite(props) {
     axios
       .put(
         //`http://localhost:5000/favorites/remove`,
-        `https://sustainable-christmas-server.herokuapp.com/favorites`,
+        `https://sustainable-christmas-server.herokuapp.com/favorites/remove`,
         { userId, tipId },
         {
           withCredentials: true,
         }
       )
       .then((response) => {
+        console.log(response);
         props.getUser(response.data);
         props.checkFavorite();
         props.updateTip();

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 
@@ -22,7 +22,7 @@ import CharityList from '../components/charity/CharityList';
 function App() {
   const initialValue = JSON.parse(localStorage.getItem('user')) || null;
   const [loggedInUser, setLoggedInUser] = useState(initialValue);
-  console.log(loggedInUser);
+
   const service = new AuthService();
 
   const fetchUser = () => {
@@ -38,10 +38,6 @@ function App() {
         });
     }
   };
-
-  useEffect(() => {
-    fetchUser();
-  }, []);
 
   const getUser = (userObject) => {
     setLoggedInUser(userObject);

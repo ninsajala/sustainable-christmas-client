@@ -8,7 +8,6 @@ function RemoveFavorite(props) {
   function removeFromFavorites() {
     axios
       .put(
-        //`http://localhost:5000/favorites/remove`,
         `https://sustainable-christmas-server.herokuapp.com/favorites/remove`,
         { userId, tipId },
         {

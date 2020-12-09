@@ -1,0 +1,43 @@
+.charityOverview {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.charityIntro {
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.charityList {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.charityList .oneProject {
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  background-color: rgba(248, 248, 248, 0.8);
+  width: 40%;
+  height: 80vh;
+  margin: 3%;
+  padding: 2%;
+  text-align: center;
+}
+
+.oneProject img {
+  width: 80%;
+  border-radius: 15px;
+}

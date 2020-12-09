@@ -29,8 +29,7 @@ function Recipes() {
       <div className='recipeIntro'>
         <h2>Christmas Recipes</h2>
         <p>
-          Cooking more environment friendly is easy, just keep these for things
-          in mind:
+          Cooking more environment friendly is easy, just make sure it's
         </p>
         <ul>
           <a

@@ -9,10 +9,7 @@ function TipsOverview() {
 
   useEffect(() => {
     axios
-      .get(
-        //'http://localhost:5000/tips'
-        'https://sustainable-christmas-server.herokuapp.com/tips'
-      )
+      .get('https://sustainable-christmas-server.herokuapp.com/tips')
       .then((foundTips) => {
         setApiData(foundTips.data);
         setAllTips(foundTips.data);

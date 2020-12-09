@@ -14,6 +14,7 @@ const initialState = {
 
 function AddTip(props) {
   const [formState, setFormState] = useState(initialState);
+  let uploadFile = null;
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -24,6 +25,7 @@ function AddTip(props) {
 
   const handleFileUpload = (event) => {
     const uploadData = new FormData();
+    uploadFile = event.target.files[0];
     uploadData.append('picture', event.target.files[0]);
 
     service
@@ -43,7 +45,6 @@ function AddTip(props) {
 
     axios
       .post(
-        //'http://localhost:5000/tips',
         'https://sustainable-christmas-server.herokuapp.com/tips',
         {
           title,
@@ -126,15 +127,21 @@ function AddTip(props) {
         </div>
 
         <div className='form-group button-group'>
-          <button className='btn btn-warning' type='submit'>
-            Add Tip
-          </button>
-
           <Link to='/tips'>
             <button className='btn btn-danger' type='cancel'>
               Cancel
             </button>
           </Link>
+
+          {!formState.picture && uploadFile ? (
+            <button className='btn btn-warning' disabled type='submit'>
+              Save Changes
+            </button>
+          ) : (
+            <button className='btn btn-warning' type='submit'>
+              Save Changes
+            </button>
+          )}
         </div>
       </form>
     </div>

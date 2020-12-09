@@ -8,7 +8,6 @@ function AddFavorite(props) {
   function addToFavorites() {
     axios
       .put(
-        //`http://localhost:5000/favorites/add`,
         `https://sustainable-christmas-server.herokuapp.com/favorites/add`,
         { userId, tipId },
         {

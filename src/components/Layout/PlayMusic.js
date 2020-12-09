@@ -9,6 +9,7 @@ function PlayMusic() {
       <AudioPlayer
         title='Play Christmas Music'
         src={lastChristmas}
+        loop
         showJumpControls={false}
         customVolumeControls={[]}
         customProgressBarSection={[]}

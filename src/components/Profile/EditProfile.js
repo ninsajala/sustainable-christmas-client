@@ -8,9 +8,11 @@ function EditProfile(props) {
     firstName: props.loggedInUser.firstName,
     lastName: props.loggedInUser.lastName,
     about: props.loggedInUser.about,
-    picture: props.loggedInUser.picture,
+    picture: '',
     pictureOld: props.loggedInUser.picture,
   });
+
+  let uploadFile = null;
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -21,6 +23,7 @@ function EditProfile(props) {
 
   const handleFileUpload = (event) => {
     const uploadData = new FormData();
+    uploadFile = event.target.files[0];
     uploadData.append('picture', event.target.files[0]);
 
     service
@@ -40,7 +43,6 @@ function EditProfile(props) {
 
     axios
       .put(
-        //`http://localhost:5000/user/${props.loggedInUser._id}`,
         `https://sustainable-christmas-server.herokuapp.com/user/${props.loggedInUser._id}`,
         { firstName, lastName, about, picture, pictureOld },
         { withCredentials: true }
@@ -105,15 +107,20 @@ function EditProfile(props) {
           value={allValues.pictureOld}
         />
         <div className='form-group button-group'>
-          <button className='btn btn-warning' type='submit'>
-            Submit
-          </button>
-
           <Link to='/myprofile'>
             <button className='btn btn-danger' type='cancel'>
               Cancel
             </button>
           </Link>
+          {!allValues.picture && uploadFile ? (
+            <button className='btn btn-warning' disabled type='submit'>
+              Save Changes
+            </button>
+          ) : (
+            <button className='btn btn-warning' type='submit'>
+              Save Changes
+            </button>
+          )}
         </div>
       </form>
     </div>

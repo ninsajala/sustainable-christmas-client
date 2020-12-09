@@ -6,7 +6,6 @@ function CommentSection(props) {
   const handleRemoveComment = (id) => {
     axios
       .delete(
-        //`http://localhost:5000/comment/${id}`
         `https://sustainable-christmas-server.herokuapp.com/comment/${id}`
       )
       .then(() => {

@@ -20,7 +20,6 @@ function Comment(props) {
 
     axios
       .post(
-        //'http://localhost:5000/comment',
         'https://sustainable-christmas-server.herokuapp.com/comment',
         { content, tip, author },
         { withCredentials: true }
@@ -39,7 +38,7 @@ function Comment(props) {
   return (
     <form className='row commentForm' onSubmit={handleFormSubmit}>
       <input
-        className='form-control col-8'
+        className='form-control col-9'
         placeholder='Leave a comment'
         maxLength='140'
         name='content'
@@ -48,7 +47,7 @@ function Comment(props) {
         value={allValues.content}
       />
 
-      <div className='form-group col-1'>
+      <div className='form-group col-3'>
         <button className='btn btn-warning' type='submit'>
           Add
         </button>

@@ -7,7 +7,7 @@ function Footer() {
       <span>
         This page was coded by{' '}
         <a href='https://github.com/ninsajala' target='_blank' rel='noreferrer'>
-          Nina
+          <b>Nina</b>
         </a>{' '}
         as final project for Ironhack - 2020
       </span>

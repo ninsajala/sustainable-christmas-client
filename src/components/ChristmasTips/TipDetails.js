@@ -14,7 +14,6 @@ function TipDetails(props) {
   const getTipDetails = () => {
     axios
       .get(
-        //`http://localhost:5000/tips/${params.id}`
         `https://sustainable-christmas-server.herokuapp.com/tips/${params.id}`
       )
       .then((foundTip) => {
@@ -30,7 +29,6 @@ function TipDetails(props) {
   const handleDeleteTip = () => {
     axios
       .delete(
-        //`http://localhost:5000/tips/${tipDetails._id}`
         `https://sustainable-christmas-server.herokuapp.com/tips/${tipDetails._id}`
       )
       .then(() => props.history.push(`/tips`));

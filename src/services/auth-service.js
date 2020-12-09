@@ -3,7 +3,6 @@ import axios from 'axios';
 class AuthService {
   constructor() {
     this.service = axios.create({
-      //baseURL: 'http://localhost:5000',
       baseURL: 'https://sustainable-christmas-server.herokuapp.com/',
       withCredentials: true,
     });

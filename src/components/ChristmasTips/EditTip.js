@@ -8,12 +8,11 @@ function EditTip(props) {
   const [formState, setFormState] = useState({});
   const { params } = props.match;
   const [loaded, setLoaded] = useState(false);
-  let uploadFile
+  let uploadFile = null;
 
   useEffect(() => {
     axios
       .get(
-        //`http://localhost:5000/tips/${params.id}`
         `https://sustainable-christmas-server.herokuapp.com/tips/${params.id}`
       )
       .then((foundTip) => {
@@ -43,7 +42,7 @@ function EditTip(props) {
     service
       .upload(uploadData)
       .then((response) => {
-        console.log(response)
+        console.log(response);
         setFormState({ ...formState, picture: response.cloudUrl });
       })
       .catch((err) => {
@@ -65,7 +64,6 @@ function EditTip(props) {
 
     axios
       .put(
-        //`http://localhost:5000/tips/${params.id}`,
         `https://sustainable-christmas-server.herokuapp.com/tips/${params.id}`,
         {
           title,
@@ -158,6 +156,12 @@ function EditTip(props) {
             />
 
             <div className='form-group button-group'>
+              <Link to={`/tips/${params.id}`}>
+                <button className='btn btn-danger' type='cancel'>
+                  Cancel
+                </button>
+              </Link>
+
               {!formState.picture && uploadFile ? (
                 <button className='btn btn-warning' disabled type='submit'>
                   Save Changes
@@ -167,12 +171,6 @@ function EditTip(props) {
                   Save Changes
                 </button>
               )}
-
-              <Link to={`/tips/${params.id}`}>
-                <button className='btn btn-danger' type='cancel'>
-                  Cancel
-                </button>
-              </Link>
             </div>
           </form>
         </div>

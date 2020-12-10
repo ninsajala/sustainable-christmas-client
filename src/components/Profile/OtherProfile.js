@@ -99,20 +99,19 @@ function OtherProfile(props) {
                   }}></div>
               )}
             </div>
-            {userData.about && (
-              <div className='about'>
-                <h5>
-                  About {userData.firstName} {userData.lastName}:
-                </h5>
-                <p>{userData.about}</p>
-                <div className='followSection'>
-                  {checkFollowing()}{' '}
-                  <p>
-                    Followed by <b>{userData.followers.length}</b>
-                  </p>
-                </div>
+
+            <div className='about'>
+              <h5>
+                About {userData.firstName} {userData.lastName}:
+              </h5>
+              {userData.about && <p>{userData.about}</p>}
+              <div className='followSection'>
+                {checkFollowing()}{' '}
+                <p>
+                  Followed by <b>{userData.followers.length}</b>
+                </p>
               </div>
-            )}
+            </div>
           </div>
           <h5>Tips written by {userData.firstName}</h5>
           <div className='profileSection'>

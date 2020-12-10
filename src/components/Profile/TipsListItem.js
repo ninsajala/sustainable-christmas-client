@@ -23,8 +23,8 @@ function TipsListItem(props) {
             </Link>
           </button>
           <Link to={`/tips/${props.item._id}`}>
-            <button className='btn btn-warning' title='view tip'>
-              View
+            <button className='btn btn-warning' title='View Tip'>
+              <i class='fas fa-eye'></i>
             </button>
           </Link>
           <button

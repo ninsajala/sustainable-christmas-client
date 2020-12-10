@@ -109,7 +109,9 @@ function OtherProfile(props) {
                 <p>{userData.about}</p>
                 <div className='followSection'>
                   {checkFollowing()}{' '}
-                  <p>Followed by {userData.followers.length}</p>
+                  <p>
+                    Followed by <b>{userData.followers.length}</b>
+                  </p>
                 </div>
               </div>
             )}

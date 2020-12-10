@@ -20,7 +20,8 @@ function EditTip(props) {
           title: foundTip.data.title,
           content: foundTip.data.content,
           category: foundTip.data.category,
-          picture: foundTip.data.picture,
+          picture: '',
+          pictureOld: foundTip.data.picture,
           extraInfo: foundTip.data.extraInfo,
         });
         setLoaded(true);
@@ -84,7 +85,7 @@ function EditTip(props) {
   return props.loggedInUser ? (
     <div>
       {loaded ? (
-        <div className='formWrapper'>
+        <div className='tipFormWrapper'>
           <h3>Edit your Christmas Tip</h3>
           <form className='signUpForm bigForm' onSubmit={handleFormSubmit}>
             <div className='form-group'>
@@ -143,6 +144,7 @@ function EditTip(props) {
                 className='form-control-file'
                 type='file'
                 name='picture'
+                value={formState.picture}
                 onChange={handleFileUpload}
               />
             </div>
@@ -152,15 +154,13 @@ function EditTip(props) {
               name='pictureOld'
               hidden
               onChange={handleInputChange}
-              value={formState.picture}
+              value={formState.pictureOld}
             />
 
             <div className='form-group button-group'>
-              <Link to={`/tips/${params.id}`}>
-                <button className='btn btn-danger' type='cancel'>
-                  Cancel
-                </button>
-              </Link>
+              <button className='btn btn-danger' type='cancel'>
+                <Link to={`/tips/${params.id}`}>Cancel</Link>
+              </button>
 
               {!formState.picture && uploadFile ? (
                 <button className='btn btn-warning' disabled type='submit'>

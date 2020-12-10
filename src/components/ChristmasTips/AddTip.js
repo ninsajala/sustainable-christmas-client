@@ -64,7 +64,7 @@ function AddTip(props) {
   };
 
   return props.loggedInUser ? (
-    <div className='formWrapper'>
+    <div className='tipFormWrapper'>
       <h3>Add a Christmas Tip</h3>
       <form className='signUpForm bigForm' onSubmit={handleFormSubmit}>
         <div className='form-group'>
@@ -127,11 +127,9 @@ function AddTip(props) {
         </div>
 
         <div className='form-group button-group'>
-          <Link to='/tips'>
-            <button className='btn btn-danger' type='cancel'>
-              Cancel
-            </button>
-          </Link>
+          <button className='btn btn-danger' type='cancel'>
+            <Link to='/tips'>Cancel</Link>
+          </button>
 
           {!formState.picture && uploadFile ? (
             <button className='btn btn-warning' disabled type='submit'>

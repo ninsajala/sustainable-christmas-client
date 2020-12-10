@@ -39,6 +39,7 @@ function CommentSection(props) {
         tip={props.tipDetails._id}
         user={props.loggedInUser._id}
         updateTip={props.getTipDetails}
+        getUser={props.getUser}
       />
     </div>
   );

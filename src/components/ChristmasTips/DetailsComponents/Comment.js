@@ -24,7 +24,8 @@ function Comment(props) {
         { content, tip, author },
         { withCredentials: true }
       )
-      .then(() => {
+      .then((response) => {
+        props.getUser(response.data);
         setAllValues({
           content: '',
           tip: props.tip,

@@ -6,7 +6,7 @@ import OtherProfileTipList from './OtherProfileTipList';
 
 function OtherProfile(props) {
   const [loaded, setLoaded] = useState(false);
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState({});
   const { params } = props.match;
   let myID;
   let otherUserId;
@@ -21,6 +21,10 @@ function OtherProfile(props) {
         setLoaded(true);
       });
   }
+
+  useEffect(() => {
+    getUserData();
+  }, []);
 
   function followUser() {
     myID = props.loggedInUser._id;
@@ -80,10 +84,6 @@ function OtherProfile(props) {
     }
   }
 
-  useEffect(() => {
-    getUserData();
-  }, []);
-
   return userData ? (
     <div className='profileWrapper'>
       {loaded ? (
@@ -91,7 +91,7 @@ function OtherProfile(props) {
           <h4>{userData.firstName}'s Profile</h4>
           <div className='userInfo'>
             <div className='pictureWrap'>
-              {userData.picture.length <= 0 ? (
+              {!userData.picture ? (
                 <div className='profilePicture Alt'></div>
               ) : (
                 <div
@@ -116,15 +116,15 @@ function OtherProfile(props) {
           </div>
           <h5>Tips written by {userData.firstName}</h5>
           <div className='profileSection'>
-            {userData.tips.length <= 0 && (
+            {userData.tips ? (
+              userData.tips.map((item) => (
+                <OtherProfileTipList item={item} key={item._id} />
+              ))
+            ) : (
               <div>
                 <p>No tips added yet</p>
               </div>
             )}
-            {userData.tips &&
-              userData.tips.map((item) => (
-                <OtherProfileTipList item={item} key={item._id} />
-              ))}
           </div>
         </div>
       ) : (

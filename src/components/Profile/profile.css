@@ -50,8 +50,9 @@
 }
 
 .profileSection {
+  width: 100%;
   display: flex;
-  flex-flow: row wrap-reverse;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: center;
   margin-bottom: 3%;
@@ -65,16 +66,22 @@
 }
 
 .listItem {
-  margin: 1%;
+  margin: 3%;
 }
 
 .listItem a {
   padding: 3%;
   margin: 2%;
-  width: 16vw;
 }
 
 .listItem .oneTipList {
+  width: 16vw;
+  height: 15vw;
+  padding: 3%;
+  margin: 3%;
+}
+
+.listItem .withButtons {
   width: 18vw;
   height: 18vw;
   padding: 3%;
@@ -82,7 +89,11 @@
 }
 
 .oneTipList .button-group {
-  width: 60%;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 2%;
 }
 
 .oneTipList .button-group a {
@@ -90,7 +101,11 @@
 }
 
 .oneTipList .button-group button {
-  width: 3vw;
+  min-width: 3vw;
+  height: 3vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .listItem .oneTipList img {
@@ -100,6 +115,7 @@
 
 .listItem .oneTipList h4 {
   font-size: 1.2vw;
+  margin-top: 4%;
 }
 
 .logInWarning {

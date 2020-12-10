@@ -74,6 +74,27 @@ function MyProfile(props) {
                 <FavoriteListItem item={item} key={item._id} />
               ))}
           </div>
+          <h5>Following</h5>
+          <div className='profileSection'>
+            {props.loggedInUser.following.length <= 0 && (
+              <div>
+                <p>You're not following anyone yet</p>
+              </div>
+            )}
+            {props.loggedInUser.following &&
+              props.loggedInUser.following.map((item) => (
+                <div className='listItem' key={item._id}>
+                  <Link to={`/profile/${item._id}`}>
+                    <article className='oneTipList'>
+                      <img src={item.picture} alt={item.firstName} />
+                      <h4>
+                        {item.firstName} {item.lastName}
+                      </h4>
+                    </article>
+                  </Link>
+                </div>
+              ))}
+          </div>
         </div>
       ) : (
         <p>Finding User</p>

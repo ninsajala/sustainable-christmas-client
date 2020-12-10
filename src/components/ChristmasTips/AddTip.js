@@ -58,7 +58,7 @@ function AddTip(props) {
       )
       .then((response) => {
         setFormState(initialState);
-        props.history.push(`/tips`);
+        props.history.push(`/tips/${response.data.id}`);
       })
       .catch((error) => console.error(error));
   };

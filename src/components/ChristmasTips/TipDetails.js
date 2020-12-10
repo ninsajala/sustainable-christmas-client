@@ -126,6 +126,7 @@ function TipDetails(props) {
               getTipDetails={getTipDetails}
               tipDetails={tipDetails}
               loggedInUser={props.loggedInUser}
+              getUser={props.getUser}
             />
           </div>
         </div>

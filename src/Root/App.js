@@ -60,7 +60,9 @@ function App() {
           <Route
             exact
             path='/tips/add'
-            render={() => <AddTip loggedInUser={loggedInUser} />}
+            render={() => (
+              <AddTip loggedInUser={loggedInUser} getUser={getUser} />
+            )}
           />
           <Route
             exact

@@ -108,6 +108,7 @@ function EditTip(props) {
                 value={formState.category}
                 name='category'
                 onChange={handleInputChange}>
+                <option value=''>Select a Category</option>
                 <option value='Food'>Food</option>
                 <option value='Gifts'>Gifts</option>
                 <option value='Decoration'>Decoration</option>
@@ -144,7 +145,6 @@ function EditTip(props) {
                 className='form-control-file'
                 type='file'
                 name='picture'
-                value={formState.picture}
                 onChange={handleFileUpload}
               />
             </div>

@@ -8,14 +8,12 @@ import CommentSection from './DetailsComponents/CommentSection';
 import {
   FacebookShareButton,
   LinkedinShareButton,
-  PinterestShareButton,
   TwitterShareButton,
   WhatsappShareButton,
 } from 'react-share';
 import {
   FacebookIcon,
   LinkedinIcon,
-  PinterestIcon,
   TwitterIcon,
   WhatsappIcon,
 } from 'react-share';
@@ -141,26 +139,25 @@ function TipDetails(props) {
               getUser={props.getUser}
             />
             <div className='shareSection'>
+              <p>Share</p>
               <FacebookShareButton
                 url={`https://www.sustainable-christmas.net/`}>
                 {' '}
                 <FacebookIcon size={30} round={true} />
               </FacebookShareButton>
+
               <TwitterShareButton
                 url={`https://www.sustainable-christmas.net/`}>
                 {' '}
                 <TwitterIcon size={30} round={true} />
               </TwitterShareButton>
+
               <LinkedinShareButton
                 url={`https://www.sustainable-christmas.net/`}>
                 {' '}
                 <LinkedinIcon size={30} round={true} />
               </LinkedinShareButton>
-              <PinterestShareButton
-                url={`https://www.sustainable-christmas.net/`}>
-                {' '}
-                <PinterestIcon size={30} round={true} />
-              </PinterestShareButton>
+
               <WhatsappShareButton
                 url={`https://www.sustainable-christmas.net/`}>
                 {' '}

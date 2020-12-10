@@ -58,7 +58,8 @@ function AddTip(props) {
       )
       .then((response) => {
         setFormState(initialState);
-        props.history.push(`/tips/${response.data.id}`);
+        props.getUser(response.data.updatedUser)
+        props.history.push(`/tips/${response.data.foundTip._id}`);
       })
       .catch((error) => console.error(error));
   };
@@ -87,6 +88,7 @@ function AddTip(props) {
             value={formState.category}
             name='category'
             onChange={handleInputChange}>
+            <option value=''>Select a Category</option>
             <option value='Food'>Food</option>
             <option value='Gifts'>Gifts</option>
             <option value='Decoration'>Decoration</option>

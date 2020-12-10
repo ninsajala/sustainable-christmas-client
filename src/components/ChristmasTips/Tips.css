@@ -44,6 +44,12 @@
   width: 50%;
 }
 
+.editProfileForm .button-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .tipFormWrapper button {
   margin: 5%;
 }

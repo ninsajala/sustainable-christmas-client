@@ -22,9 +22,7 @@ function TipDetails(props) {
       });
   };
 
-  useEffect(() => {
-    getTipDetails();
-  }, []);
+  useEffect(getTipDetails, [params.id]);
 
   const handleDeleteTip = () => {
     axios

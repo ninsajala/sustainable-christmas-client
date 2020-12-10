@@ -22,9 +22,7 @@ function OtherProfile(props) {
       });
   }
 
-  useEffect(() => {
-    getUserData();
-  }, []);
+  useEffect(getUserData, [params.id]);
 
   function followUser() {
     myID = props.loggedInUser._id;

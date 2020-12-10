@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
 
 function TipSearch(props) {
-  const [searchInput, setSearchInput] = useState('');
-  const [select, setSelect] = useState('');
+  const [searchInput, setSearchInput] = useState({ category: '', search: '' });
 
   const inputChangeHandler = (event) => {
-    setSearchInput(event.target.value);
-  };
-
-  const selectHandler = (event) => {
-    setSelect(event.target.value);
+    const { name, value } = event.target;
+    setSearchInput({ ...searchInput, [name]: value });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.searchArticles(searchInput, select);
+    props.searchArticles(searchInput);
   };
 
   return (
@@ -24,7 +20,7 @@ function TipSearch(props) {
           <select
             className='form-control col-sm-3'
             name='category'
-            onChange={selectHandler}>
+            onChange={inputChangeHandler}>
             <option value=''>All</option>
             <option value='Food'>Food</option>
             <option value='Gifts'>Gifts</option>

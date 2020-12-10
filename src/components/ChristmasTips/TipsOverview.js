@@ -5,33 +5,28 @@ import TipSearch from './TipSearch';
 
 function TipsOverview() {
   const [allTips, setAllTips] = useState([]);
-  const [apiData, setApiData] = useState([]);
+  const [filteredTips, setFilteredTips] = useState([]);
+  const [searching, setSearching] = useState([false]);
 
   useEffect(() => {
     axios
       .get('https://sustainable-christmas-server.herokuapp.com/tips')
       .then((foundTips) => {
-        setApiData(foundTips.data);
+        setFilteredTips(foundTips.data);
         setAllTips(foundTips.data);
       });
   }, []);
 
-  function searchArticles(input, select) {
+  function searchArticles(searchInput) {
     let allTipsCopy = [...allTips];
 
-    if (!input && !select) {
-      setAllTips(apiData);
-    } else if (!input) {
-      setAllTips(allTipsCopy.filter((item) => item.category.includes(select)));
-    } else {
-      setAllTips(
-        allTipsCopy.filter(
-          (item) =>
-            item.title.toLowerCase().includes(input.toLowerCase()) &&
-            item.category.includes(select)
-        )
-      );
-    }
+    const filteredArticles = allTipsCopy.filter(
+      (item) =>
+        item.category.includes(searchInput.category) &&
+        item.content.toLowerCase().includes(searchInput.search.toLowerCase())
+    );
+    setFilteredTips(filteredArticles);
+    setSearching(true);
   }
 
   return (
@@ -47,17 +42,29 @@ function TipsOverview() {
       </div>
 
       <div className='allTipsWrapper'>
-        {allTips.map((item) => (
-          <Link key={item._id} to={`/tips/${item._id}`}>
-            <article className='oneTipList'>
-              <img src={item.picture} alt={item.title} />
-              <h4>{item.title}</h4>
-              <p>
-                By {item.author.firstName} {item.author.lastName}
-              </p>
-            </article>
-          </Link>
-        ))}
+        {searching
+          ? filteredTips.map((item) => (
+              <Link key={item._id} to={`/tips/${item._id}`}>
+                <article className='oneTipList'>
+                  <img src={item.picture} alt={item.title} />
+                  <h4>{item.title}</h4>
+                  <p>
+                    By {item.author.firstName} {item.author.lastName}
+                  </p>
+                </article>
+              </Link>
+            ))
+          : allTips.map((item) => (
+              <Link key={item._id} to={`/tips/${item._id}`}>
+                <article className='oneTipList'>
+                  <img src={item.picture} alt={item.title} />
+                  <h4>{item.title}</h4>
+                  <p>
+                    By {item.author.firstName} {item.author.lastName}
+                  </p>
+                </article>
+              </Link>
+            ))}
       </div>
     </div>
   );

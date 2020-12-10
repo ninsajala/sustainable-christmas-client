@@ -12,7 +12,7 @@ function TipsListItem(props) {
   };
 
   return (
-    <div className='listItem'>
+    <div className='listItem' key={props.item._id}>
       <article className='oneTipList withButtons'>
         <img src={props.item.picture} alt={props.item.title} />
         <h4>{props.item.title}</h4>

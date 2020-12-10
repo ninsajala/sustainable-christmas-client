@@ -43,7 +43,7 @@ function CharityList() {
             <p>A project from {item.organization.name}</p>
             <p>{item.summary}</p>
             <button className='btn btn-warning'>
-              <a href={item.url} rel='noreferrer' target='_blank'>
+              <a href={item.organization.url} target='_blank' rel='noreferrer'>
                 More Info
               </a>
             </button>

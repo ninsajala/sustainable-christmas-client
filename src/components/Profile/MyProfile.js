@@ -28,15 +28,16 @@ function MyProfile(props) {
                   }}></div>
               )}
             </div>
-            {props.loggedInUser.about && (
-              <div className='about'>
-                <h5>About:</h5>
-                <p>{props.loggedInUser.about}</p>
-                <Link to='/myprofile/edit'>
-                  <button className='btn btn-warning'>Edit Profile</button>
-                </Link>
-              </div>
-            )}
+            <div className='about'>
+              <h5>About:</h5>
+              {props.loggedInUser.about && <p>{props.loggedInUser.about}</p>}
+              <p>
+                You're followed by {props.loggedInUser.followers.length} users
+              </p>
+              <Link to='/myprofile/edit'>
+                <button className='btn btn-warning'>Edit Profile</button>
+              </Link>
+            </div>
           </div>
           <h5>My Christmas Tips</h5>
           <div className='profileSection'>
@@ -85,7 +86,7 @@ function MyProfile(props) {
               props.loggedInUser.following.map((item) => (
                 <div className='listItem' key={item._id}>
                   <Link to={`/profile/${item._id}`}>
-                    <article className='oneTipList'>
+                    <article className='oneTipList followingListItem'>
                       <img src={item.picture} alt={item.firstName} />
                       <h4>
                         {item.firstName} {item.lastName}

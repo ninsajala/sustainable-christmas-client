@@ -150,3 +150,7 @@
 .followSection p {
   margin-bottom: 0;
 }
+
+.listItem .followingListItem img {
+  width: 15vw;
+}

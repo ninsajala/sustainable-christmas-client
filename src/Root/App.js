@@ -42,6 +42,7 @@ function App() {
 
   const getUser = (userObject) => {
     setLoggedInUser(userObject);
+    localStorage.setItem(`user`, JSON.stringify(userObject));
     console.log(`Get user says:`, userObject);
   };
 

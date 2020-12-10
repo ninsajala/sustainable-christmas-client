@@ -26,7 +26,7 @@ function EditTip(props) {
         });
         setLoaded(true);
       });
-  }, []);
+  }, [params.id]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -94,7 +94,7 @@ function EditTip(props) {
                 type='text'
                 placeholder='Title of your Article'
                 name='title'
-                maxLength='50'
+                maxLength='35'
                 onChange={handleInputChange}
                 value={formState.title}
                 autoComplete='off'

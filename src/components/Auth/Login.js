@@ -30,7 +30,7 @@ function Login(props) {
         setFormValues(initialState);
         localStorage.setItem(`user`, JSON.stringify(response));
         props.getUser(response);
-        props.history.push('/');
+        props.history.push('/myprofile');
       })
       .catch((error) => {
         const { message } = error.response.data;

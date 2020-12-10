@@ -76,7 +76,7 @@ function AddTip(props) {
             onChange={handleInputChange}
             value={formState.title}
             autoComplete='off'
-            maxLength='50'
+            maxLength='35'
           />
         </div>
 

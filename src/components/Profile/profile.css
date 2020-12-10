@@ -152,5 +152,6 @@
 }
 
 .listItem .followingListItem img {
-  width: 15vw;
+  width: 10vw;
+  height: auto;
 }

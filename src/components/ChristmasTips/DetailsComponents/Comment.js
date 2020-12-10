@@ -41,7 +41,7 @@ function Comment(props) {
       <input
         className='form-control col-9'
         placeholder='Leave a comment'
-        maxLength='140'
+        maxLength='35'
         name='content'
         onChange={handleInputChange}
         autoComplete='off'

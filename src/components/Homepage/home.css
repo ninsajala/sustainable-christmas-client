@@ -6,8 +6,8 @@
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
-  color: rgb(165, 15, 15);
-  text-shadow: 2px 3px 5px rgb(245, 245, 245);
+  color: rgb(4, 170, 120);
+  text-shadow: 2px 3px 5px rgb(20, 20, 20);
 }
 
 .Homepage h3 {
@@ -18,7 +18,7 @@
 
 h1 {
   font-family: 'Yellowtail', cursive;
-  font-weight: 800;
+  font-weight: 500;
   font-size: 15vw;
   width: 100%;
   text-align: center;

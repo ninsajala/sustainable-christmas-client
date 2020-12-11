@@ -42,7 +42,7 @@ function CharitySearch(props) {
           <option value='mentalhealth'>Mental Health</option>
           <option value='justice'>Racial Justice</option>
           <option value='Refugee'>Refugee</option>
-          <option value='Reproductive'>Reproductive Health</option>
+          <option value='reproductive'>Reproductive Health</option>
           <option value='housing'>Safe Housing</option>
           <option value='agriculture'>Sustainable Agriculture</option>
           <option value='wildlife'>Wildlife Conservation</option>

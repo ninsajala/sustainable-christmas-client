@@ -115,15 +115,11 @@ function TipDetails(props) {
             </div>
           </div>
           <div className='tipDetailsMain'>
-            {tipDetails.picture.length <= 0 ? (
-              <div className='detailsPicture altDetails'></div>
-            ) : (
-              <div
-                className='detailsPicture'
-                style={{
-                  backgroundImage: `url(${tipDetails.picture})`,
-                }}></div>
-            )}
+            <div
+              className='detailsPicture'
+              style={{
+                backgroundImage: `url(${tipDetails.picture})`,
+              }}></div>
             <p>{tipDetails.content}</p>
             {tipDetails.extraInfo && (
               <a href={tipDetails.extraInfo} rel='noreferrer' target='_blank'>

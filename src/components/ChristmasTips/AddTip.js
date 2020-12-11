@@ -136,11 +136,11 @@ function AddTip(props) {
 
           {!formState.picture && uploadFile ? (
             <button className='btn btn-warning' disabled type='submit'>
-              Save Changes
+              Add Tip
             </button>
           ) : (
             <button className='btn btn-warning' type='submit'>
-              Save Changes
+              Add Tip
             </button>
           )}
         </div>

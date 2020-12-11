@@ -18,15 +18,11 @@ function MyProfile(props) {
           <h4>Welcome {props.loggedInUser.firstName}</h4>
           <div className='userInfo'>
             <div className='pictureWrap'>
-              {props.loggedInUser.picture.length <= 0 ? (
-                <div className='profilePicture Alt'></div>
-              ) : (
-                <div
-                  className='profilePicture'
-                  style={{
-                    backgroundImage: `url(${props.loggedInUser.picture})`,
-                  }}></div>
-              )}
+              <div
+                className='profilePicture'
+                style={{
+                  backgroundImage: `url(${props.loggedInUser.picture})`,
+                }}></div>
             </div>
             <div className='about'>
               <h5>About:</h5>
@@ -36,6 +32,11 @@ function MyProfile(props) {
               </p>
               <Link to='/myprofile/edit'>
                 <button className='btn btn-warning'>Edit Profile</button>
+              </Link>
+              <Link to='/tips/add'>
+                <button className='btn btn-warning' title='Go to addition form'>
+                  Add a Tip
+                </button>
               </Link>
             </div>
           </div>
@@ -86,7 +87,7 @@ function MyProfile(props) {
               props.loggedInUser.following.map((item) => (
                 <div className='listItem' key={item._id}>
                   <Link to={`/profile/${item._id}`}>
-                    <article className='oneTipList followingListItem'>
+                    <article className='oneListItem followingListItem'>
                       <img src={item.picture} alt={item.firstName} />
                       <h4>
                         {item.firstName} {item.lastName}

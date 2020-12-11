@@ -5,7 +5,7 @@ function RecipeInList(props) {
   return (
     <div className='oneRecipeList'>
       <Link to={`/recipes/${props.recipe.id}`}>
-        <article className='oneTipList'>
+        <article className='oneListItem'>
           <img src={props.recipe.image} alt={props.recipe.title} />
           <h4>{props.recipe.title}</h4>
         </article>

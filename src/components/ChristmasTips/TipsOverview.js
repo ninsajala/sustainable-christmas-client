@@ -45,7 +45,7 @@ function TipsOverview() {
         {searching
           ? filteredTips.map((item) => (
               <Link key={item._id} to={`/tips/${item._id}`}>
-                <article className='oneTipList'>
+                <article className='oneListItem'>
                   <img src={item.picture} alt={item.title} />
                   <h4>{item.title}</h4>
                   <p>
@@ -56,7 +56,7 @@ function TipsOverview() {
             ))
           : allTips.map((item) => (
               <Link key={item._id} to={`/tips/${item._id}`}>
-                <article className='oneTipList'>
+                <article className='oneListItem'>
                   <img src={item.picture} alt={item.title} />
                   <h4>{item.title}</h4>
                   <p>

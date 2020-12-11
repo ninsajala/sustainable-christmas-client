@@ -58,7 +58,8 @@ function AddTip(props) {
       )
       .then((response) => {
         setFormState(initialState);
-        props.getUser(response.data.updatedUser)
+        console.log(response.data);
+        props.getUser(response.data.updatedUser);
         props.history.push(`/tips/${response.data.foundTip._id}`);
       })
       .catch((error) => console.error(error));

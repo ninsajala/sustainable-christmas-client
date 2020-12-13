@@ -20,7 +20,6 @@ import RecipeDetails from '../components/Recipes/RecipeDetails';
 import CharityList from '../components/charity/CharityList';
 import OtherProfile from '../components/Profile/OtherProfile';
 
-
 function App() {
   const initialValue = JSON.parse(localStorage.getItem('user')) || null;
   const [loggedInUser, setLoggedInUser] = useState(initialValue);
@@ -50,7 +49,7 @@ function App() {
   fetchUser();
 
   return (
-    <main className='App'>
+    <main className='App container-fluid'>
       <Nav loggedInUser={loggedInUser} getUser={getUser} />
       <section className='middleSection'>
         <Switch>

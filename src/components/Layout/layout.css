@@ -15,33 +15,25 @@ header {
 
 header h4 {
   font-family: 'Yellowtail', cursive;
-  font-size: 1.8vw;
-  min-width: 16vw;
-}
-
-nav {
-  margin: 0;
-  width: 100%;
-  display: flex;
-  justify-content: left;
-  align-items: center;
+  font-size: 1.7em;
+  width: 20%;
 }
 
 .menu {
-  font-size: 1.2vw;
+  margin: 0;
+  font-size: 1em;
   font-weight: 500;
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
+  width: 100%;
 }
 
 .menu a {
   width: 100%;
-  padding: 0 2%;
   margin: 1%;
   text-align: center;
   text-decoration: none;
-  min-width: 11vw;
 }
 
 .audioWrapper {
@@ -51,24 +43,12 @@ nav {
   padding: 0;
   align-items: flex-end;
   justify-content: center;
-  min-width: 11vw;
-}
-
-.rhap_container {
-  padding: 0;
-  margin: 0;
-  height: 2em;
+  min-width: 5em;
 }
 
 .rhap_play-pause-button svg {
-  width: 2.3vw;
-  height: 2.3vw;
-}
-
-.menu > span {
+  width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
 }
 
 footer {

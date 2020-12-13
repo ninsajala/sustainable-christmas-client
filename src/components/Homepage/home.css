@@ -1,26 +1,26 @@
 .Homepage {
   padding: 1%;
-  min-height: auto;
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-direction: column;
-  color: rgb(4, 170, 120);
+  color: rgb(104, 10, 68);
   text-shadow: 2px 3px 5px rgb(20, 20, 20);
 }
 
 .Homepage h3 {
   margin: 1% 4%;
   font-weight: 600;
-  font-size: 6vw;
+  font-size: 4em;
+  /* width: 100%; */
 }
 
 h1 {
   font-family: 'Yellowtail', cursive;
   font-weight: 500;
-  font-size: 15vw;
-  width: 100%;
+  font-size: 10em;
+  max-width: 100%;
   text-align: center;
   margin: 3%;
 }

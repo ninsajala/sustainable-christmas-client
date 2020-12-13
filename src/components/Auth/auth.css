@@ -7,7 +7,7 @@
   background-color: white;
   border-radius: 15px;
   box-shadow: 2px 2px 2px rgb(173, 173, 173);
-  min-width: 35vw;
+  width: 25em;
 }
 
 .formWrapper h3 {
@@ -24,8 +24,7 @@
 }
 
 .signUpForm .form-group {
-  width: 100%;
-  min-width: 27vw;
+  width: 23em;
   margin: 3%;
   justify-content: center;
 }

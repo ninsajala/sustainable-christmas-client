@@ -8,7 +8,9 @@
 
 .tipOverviewHeader {
   width: 100%;
-  min-width: 40vw;
+  min-width: 30em;
+  margin-top: 3.2em;
+  flex-flow: row wrap;
   display: flex;
   justify-content: space-between;
 }
@@ -28,7 +30,7 @@
   background-color: white;
   border-radius: 15px;
   box-shadow: 2px 2px 2px rgb(173, 173, 173);
-  min-width: 50vw;
+  width: 40em;
 }
 
 .tipFormWrapper h3 {
@@ -36,7 +38,7 @@
 }
 
 .bigForm {
-  width: 40vw;
+  width: 40em;
 }
 
 .button-group {
@@ -79,28 +81,28 @@
   align-items: center;
   min-height: fit-content;
   min-width: fit-content;
-  width: 25vw;
-  height: 25vw;
+  width: 20em;
+  height: 25em;
   color: black;
   background-color: rgba(248, 248, 248, 0.8);
   box-shadow: 3px 1px 10px rgb(82, 81, 81);
 }
 
 .oneListItem h4 {
-  font-size: 2vw;
+  font-size: 2em;
   text-align: center;
   padding: 3% 1%;
 }
 
 .oneListItem p {
-  font-size: 1.2vw;
+  font-size: 1.2em;
   text-align: center;
 }
 
 .oneListItem img {
   border-radius: 15px;
-  width: 20vw;
-  height: 15vw;
+  width: 20em;
+  height: 15em;
 }
 
 .tipDetails {
@@ -109,9 +111,10 @@
   align-items: center;
   background-color: rgba(248, 248, 248, 0.8);
   border-radius: 15px;
+  margin-top: 5%;
   padding: 4%;
   text-align: center;
-  width: 70vw;
+  width: 60em;
 }
 
 .tipDetailHeaderInfo {
@@ -143,7 +146,7 @@
 .favoriteButton {
   background-color: rgba(248, 248, 248, 0);
   border: none;
-  font-size: 2vw;
+  font-size: 1.7em;
   margin-bottom: 1rem;
 }
 
@@ -213,5 +216,5 @@
 }
 
 .removeComment {
-  height: 2.5vw;
+  height: 2em;
 }

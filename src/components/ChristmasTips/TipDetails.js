@@ -39,9 +39,19 @@ function TipDetails(props) {
   const handleDeleteTip = () => {
     axios
       .delete(
-        `https://sustainable-christmas-server.herokuapp.com/tips/${tipDetails._id}`
+        `https://sustainable-christmas-server.herokuapp.com/tips/${tipDetails._id}`,
+        { withCredentials: true }
       )
-      .then(() => props.history.push(`/tips`));
+      .then(() => {
+        axios
+          .get(
+            `https://sustainable-christmas-server.herokuapp.com/user/${props.loggedInUser._id}`
+          )
+          .then((response) => {
+            props.getUser(response.data);
+            props.history.push(`/tips`);
+          });
+      });
   };
 
   const checkIfOwner = () => {

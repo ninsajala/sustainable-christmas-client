@@ -6,9 +6,19 @@ function TipsListItem(props) {
   const handleDeleteTip = () => {
     axios
       .delete(
-        `https://sustainable-christmas-server.herokuapp.com/tips/${props.item._id}`
+        `https://sustainable-christmas-server.herokuapp.com/tips/${props.item._id}`,
+        { withCredentials: true }
       )
-      .then(() => props.history.push(`/myprofile`));
+      .then(() => {
+        axios
+          .get(
+            `https://sustainable-christmas-server.herokuapp.com/user/${props.loggedInUser._id}`
+          )
+          .then((response) => {
+            props.getUser(response.data);
+            props.history.push(`/myprofile`);
+          });
+      });
   };
 
   return (

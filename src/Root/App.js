@@ -20,6 +20,7 @@ import RecipeDetails from '../components/Recipes/RecipeDetails';
 import CharityList from '../components/charity/CharityList';
 import OtherProfile from '../components/Profile/OtherProfile';
 
+
 function App() {
   const initialValue = JSON.parse(localStorage.getItem('user')) || null;
   const [loggedInUser, setLoggedInUser] = useState(initialValue);
@@ -53,7 +54,6 @@ function App() {
       <Nav loggedInUser={loggedInUser} getUser={getUser} />
       <section className='middleSection'>
         <Switch>
-          {/* {!loggedInUser && <Redirect from='/myprofile' to='/login' />} */}
           <Route exact path='/' component={Home} />
           <Route exact path='/recipes/:id' component={RecipeDetails} />
           <Route exact path='/recipes' component={Recipes} />
@@ -98,7 +98,9 @@ function App() {
           <Route
             exact
             path='/myprofile'
-            render={() => <MyProfile loggedInUser={loggedInUser} />}
+            render={() => (
+              <MyProfile loggedInUser={loggedInUser} getUser={getUser} />
+            )}
           />
           <Route
             exact

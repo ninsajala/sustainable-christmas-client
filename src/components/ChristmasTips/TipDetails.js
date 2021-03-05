@@ -147,25 +147,31 @@ function TipDetails(props) {
             <div className='shareSection'>
               <p>Share</p>
               <FacebookShareButton
-                url={`https://www.sustainable-christmas.net/`}>
+                url = {
+                  `https://www.sustainable-christmas.net/tips/${tipDetails._id}`
+                } >
                 {' '}
                 <FacebookIcon size={30} round={true} />
               </FacebookShareButton>
 
               <TwitterShareButton
-                url={`https://www.sustainable-christmas.net/`}>
+                url = {
+                  `https://www.sustainable-christmas.net/tips/${tipDetails._id}`
+                } >
                 {' '}
                 <TwitterIcon size={30} round={true} />
               </TwitterShareButton>
 
               <LinkedinShareButton
-                url={`https://www.sustainable-christmas.net/`}>
+                url = {
+                  `https://www.sustainable-christmas.net/tips/${tipDetails._id}`
+                } >
                 {' '}
                 <LinkedinIcon size={30} round={true} />
               </LinkedinShareButton>
 
               <WhatsappShareButton
-                url={`https://www.sustainable-christmas.net/`}>
+                url={`https://www.sustainable-christmas.net/tips/${tipDetails._id}`}>
                 {' '}
                 <WhatsappIcon size={30} round={true} />
               </WhatsappShareButton>
